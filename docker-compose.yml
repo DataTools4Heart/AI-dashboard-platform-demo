@@ -16,7 +16,7 @@ services:
       - 27017:27017
     links:
       - keycloak
-    env_file: .env 
+    env_file: .env
     volumes:
       - ./volumes/mongo_data:/data/db
       - ./mongodb/mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh:ro
@@ -46,7 +46,7 @@ services:
        POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     networks:
               open-vre:
-                 ipv4_address: 172.21.0.13 
+                 ipv4_address: 172.21.0.13
 
   keycloak:
     container_name: keycloak
@@ -61,7 +61,7 @@ services:
         KEYCLOAK_USER: ${KEYCLOAK_USER}
         KEYCLOAK_PASSWORD: ${KEYCLOAK_PASSWORD}
         PROXY_ADDRESS_FORWARDING: "true"
-        KEYCLOAK_FRONTEND_URL: https://nextprocurement.bsc.es/auth
+        KEYCLOAK_FRONTEND_URL: http://localhost:8080/
           #KEYCLOAK_FRONTEND_URL: http://https://84.88.189.135:8443/auth/
     volumes:
         - "./keycloak/realms:/opt/jboss/keycloak/imports"
@@ -76,7 +76,7 @@ services:
                 ipv4_address: 172.21.0.12
 
   sgecore:
-    build: 
+    build:
       context: ./sge
       #network: host
     volumes:
@@ -97,12 +97,13 @@ services:
   front_end:
     container_name: front_end
     hostname: front_end.dockerized_vre_open-vre
-    build: 
+    build:
       context: './front_end/'
       #network: host
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./front_end/act_qmaster:/var/lib/gridengine/default/common/act_qmaster
+      - ./front_end/openVRE/public/assets:/var/www/html/openVRE/public/assets
       - ./volumes/openVRE/config:/var/www/html/openVRE/config
       - ./volumes/openVRE/tools:/var/www/html/openVRE/public/tools
       - ./volumes/shared_data:/shared_data
@@ -114,9 +115,9 @@ services:
     ports:
       - "8089:80"
     networks:
-              shared:
-              open-vre:
-                ipv4_address: 172.21.0.14
+        shared:
+        open-vre:
+          ipv4_address: 172.21.0.14
 
 
 networks:
@@ -127,7 +128,7 @@ networks:
       config:
             - subnet: 172.21.0.0/24
 
-  shared: 
+  shared:
     external:
       name: shared
 

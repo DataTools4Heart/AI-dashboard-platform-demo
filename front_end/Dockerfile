@@ -18,9 +18,9 @@ RUN apt-get update -qq ; apt-get upgrade ; \
     apt-get install -y gridengine-client ; \
     apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN apt-get update && apt-get install -y libmcrypt-dev \ 
+RUN apt-get update && apt-get install -y libmcrypt-dev \
     && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
-    && docker-php-ext-install gd 
+    && docker-php-ext-install gd
 
 RUN apt-get update && apt-get install -y gnupg software-properties-common
 RUN curl -fsSL https://www.mongodb.org/static/pgp/server-4.2.asc | apt-key add -
@@ -33,7 +33,9 @@ ADD setup.sh /usr/local/bin/setup.sh
 RUN chmod +x /usr/local/bin/setup.sh
 
 WORKDIR /var/www/html
-RUN git clone --single-branch --branch dockerized https://github.com/inab/openVRE.git
+#RUN git clone --single-branch --branch dockerized https://github.com/inab/openVRE.git
+#RUN git clone --single-branch --branch dt4h_gui https://gitlab.bsc.es/inb/dt4h/openVRE.git
+ADD openVRE /var/www/html/openVRE
 RUN cd openVRE
 WORKDIR /var/www/html/openVRE
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer

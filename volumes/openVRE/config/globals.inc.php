@@ -6,11 +6,11 @@
 
 
 // Main config
-$GLOBALS['SERVER']    = "http://84.88.186.195:8088"; // domain 
+$GLOBALS['SERVER']    = "http://localhost:8089"; // domain
 $GLOBALS['BASEURL']   = "/"; // prefix url path. Set "/" for no prefix
-$GLOBALS['AppPrefix'] = "VRE-TEST"; // project url acronym
-$GLOBALS['NAME']      = "Project Name"; // project name 
-$GLOBALS['SITETITLE'] = "Project Name | Virtual Research Environment"; // site title
+$GLOBALS['AppPrefix'] = "DT4H"; // project url acronym
+$GLOBALS['NAME']      = "DataTools4Heart UI"; // project name
+$GLOBALS['SITETITLE'] = "DataTools4Heart | Virtual Research Environment"; // site title
 $GLOBALS['TIMEOUT']   = 3600; // session and cookies timeout
 
 // Email
@@ -22,16 +22,16 @@ $GLOBALS['ADMINMAIL'] = "admin@mail.es"; // BBC address for VRE ticket emails
 $GLOBALS['queueTask']  = "local.q"; //default queue
 
 // Mongo databases
-$GLOBALS['db_credentials'] = __DIR__."/mongo.conf"; // Mongo access 
+$GLOBALS['db_credentials'] = __DIR__."/mongo.conf"; // Mongo access
 $GLOBALS['dbname_VRE']     = "openVRE"; // Database name
 
 //VRE installation paths
 $GLOBALS['root']       = dirname(__DIR__); // VRE root directory
-$GLOBALS['logFile']    = $GLOBALS['root']."/logs/application.log"; // Log file path 
+$GLOBALS['logFile']    = $GLOBALS['root']."/logs/application.log"; // Log file path
 $GLOBALS['shared']     = "/shared_data/"; // VRE data directory
 $GLOBALS['dataDir']    = $GLOBALS['shared']."userdata/"; // User data directory
 $GLOBALS['pubDir']     = $GLOBALS['shared']."public/"; // Public data directory
-$GLOBALS['sampleData'] = $GLOBALS['shared']."sampleData/"; // Tool dataset directory 
+$GLOBALS['sampleData'] = $GLOBALS['shared']."sampleData/"; // Tool dataset directory
 $GLOBALS['sampleData_default'] = "basic"; // Default workspace's dataset entry
 
 // File manager config
@@ -56,7 +56,7 @@ $GLOBALS['authRealm']              = 'VRE'; // keycloak realm
 $GLOBALS['urlAuthorize' ]          = $GLOBALS['authServer'].'/realms/'.$GLOBALS['authRealm'].'/protocol/openid-connect/auth';     //get autorization_code
 $GLOBALS['urlAccessToken']         = $GLOBALS['authServer'].'/realms/'.$GLOBALS['authRealm'].'/protocol/openid-connect/token';    //get token
 $GLOBALS['urlResourceOwnerDetails']= $GLOBALS['authServer'].'/realms/'.$GLOBALS['authRealm'].'/protocol/openid-connect/userinfo'; //get user details
-$GLOBALS['urlLogout']              = $GLOBALS['authServer'].'/realms/'.$GLOBALS['authRealm'].'/protocol/openid-connect/logout';   //close keyclok session   
+$GLOBALS['urlLogout']              = $GLOBALS['authServer'].'/realms/'.$GLOBALS['authRealm'].'/protocol/openid-connect/logout';   //close keyclok session
 $GLOBALS['adminToken']             = $GLOBALS['authServer']."/realms/master/protocol/openid-connect/token"; // get Admin token
 $GLOBALS['adminRealm']             = $GLOBALS['authServer']."/admin/realms/".$GLOBALS['authRealm']; // admin keycloak users
 
@@ -66,7 +66,7 @@ $GLOBALS['adminRealm']             = $GLOBALS['authServer']."/admin/realms/".$GL
 
 
 // Default names and local path for VRE
-$GLOBALS['URL']       = $GLOBALS['SERVER'].$GLOBALS['BASEURL']; // full VRE URL 
+$GLOBALS['URL']       = $GLOBALS['SERVER'].$GLOBALS['BASEURL']; // full VRE URL
 $GLOBALS['URL_login'] = $GLOBALS['URL']."login.php"; // Default for auth server login
 $GLOBALS['htmlPath']  = $GLOBALS['root']. "/public/"; // Default path for public folder
 $GLOBALS['htmlib']    = $GLOBALS['htmlPath']."htmlib"; // Default path for html templates
@@ -174,7 +174,7 @@ $GLOBALS['clouds'] = Array(
 				"COMPUTE_API_VERSION" => "1.2",
 				"OS_USERNAME"    => "username@mail.es",
 				"OS_PASSWORD"    => "s3cr3t",
-				"OS_TENANT_NAME" => "tenancy_name" 
+				"OS_TENANT_NAME" => "tenancy_name"
 			)
 	    )
 );
