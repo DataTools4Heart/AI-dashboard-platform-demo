@@ -2,8 +2,8 @@
   "id": "http://multiscalegenomics.eu/tool-schema",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
-  "title": "MuG tool definition schema",
-  "description": "Specification of MuG tools as required for VRE",
+  "title": "Tool definition schema",
+  "description": "Specification of tools as required for VRE",
   "properties": {
     "_id": {
       "type": "string"
@@ -71,7 +71,10 @@
           "protein",
           "sequence",
           "structure",
-          "other"
+          "other",
+          "sites",
+          "data management",
+          "fed. Learning"
         ]
       },
       "default": "other"
@@ -117,6 +120,9 @@
               "$ref": "#/definitions/cloud"
             },
             "mug-ebi": {
+              "$ref": "#/definitions/cloud"
+            }
+            "local": {
               "$ref": "#/definitions/cloud"
             }
           },
@@ -258,7 +264,12 @@
                 "structure",
                 "tool_intermediate_file",
                 "tool_statistics",
-                "tss_classification_by_nucleosomes"
+                "tss_classification_by_nucleosomes",
+                "site_manifest",
+                "site_id",
+                "dataset_manifest",
+                "dataset_id",
+                "DL_ML_model"
               ]
             }
           },
@@ -446,7 +457,11 @@
                 "structure",
                 "tool_intermediate_file",
                 "tool_statistics",
-                "tss_classification_by_nucleosomes"
+                "tss_classification_by_nucleosomes",
+                "site_manifest",
+                "dataset_manifest",
+                "data_quality_report",
+                "DL_ML_model_coefficients"
               ]
             }
           },
