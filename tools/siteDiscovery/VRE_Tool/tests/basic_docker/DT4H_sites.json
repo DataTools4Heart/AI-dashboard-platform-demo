@@ -1,0 +1,127 @@
+{
+    "DT4H_sites": [
+    {
+        "id": "UB",
+        "name" : "University of Barcelona",
+        "type" : "both",
+        "status" : "true",
+        "network": "both",
+        "installation": 1,
+        "GPU": 0,
+        "paths": 0,
+        "CPU": 0,
+        "RAM": 0
+    },
+    {
+        "id" : "BUCH",
+        "name": "Bucharest Emergency Clinical Hospital",
+        "type": "data",
+        "status": 0,
+        "network": "unknown",
+        "GPU": 0,
+        "CPU": 0,
+        "RAM": 0
+    },
+    {
+        "id": "GEM",
+        "name": "Fondazione Policlinico A. Gemelli IRCCS",
+        "type": "data",
+        "status": 2,
+        "network": "false",
+        "GPU": 0,
+        "CPU": 0,
+        "RAM": 0
+    },
+    {
+        "id": "ICRC",
+        "name": "St. Anne's University Hospital Brno",
+        "type": "data",
+        "status": 2,
+        "network": "false",
+        "GPU": 0,
+        "CPU": 0,
+        "RAM": 0
+    },
+    {
+        "id": "KUH",
+        "name": "Karolinska University Hospital",
+        "type": "data",
+        "status": 2,
+        "network": "false",
+        "GPU": 0,
+        "CPU": 0,
+        "RAM": 0
+    },
+    {
+        "id": "UCLH",
+        "name": "University College London Hospital",
+        "type": "data",
+        "status": 2,
+        "network": "false",
+        "GPU": 0,
+        "CPU": 0,
+        "RAM": 0
+    },
+    {
+        "id": "UMCU",
+        "name": "University Medical Centre Utrecht",
+        "type": "data",
+        "status": 1,
+        "network": "false",
+        "GPU": 0,
+        "CPU": 0,
+        "RAM": 0
+    },
+    {
+        "id": "AUMC",
+        "name": "Amsterdam University Medical Centre",
+        "type": "data",
+        "status": 1,
+        "network": "false",
+        "GPU": 0,
+        "CPU": 0,
+        "RAM": 0
+    },
+    {
+        "id": "VHIR",
+        "name": "Vall d'Hebron Research Institute",
+        "type": "data",
+        "status": 0,
+        "network": "false",
+        "GPU": 0,
+        "CPU": 0,
+        "RAM": 0
+    },
+    {
+        "id": "BSC",
+        "name": "Barcelona Supercomputing Center",
+        "data": "comp",
+        "status": 2,
+        "network": "false",
+        "GPU": 0,
+        "CPU": 0,
+        "RAM": 0
+    },
+    {
+        "id": "TRANS",
+        "name": "Translated",
+        "data": "comp",
+        "status": 0,
+        "network": "false",
+        "GPU": 0,
+        "CPU": 0,
+        "RAM": 0
+    },
+    {
+        "id": "ATH",
+        "name": "Athena Research & Innovation Centre",
+        "data": "comp",
+        "status": 0,
+        "network": "false",
+        "GPU": 0,
+        "CPU": 0,
+        "RAM": 0
+    }
+]
+}
+

@@ -16,5 +16,7 @@ args = parser.parse_args()
 config = json.load(args.config)
 
 #TODO
+for site in config['sites']:
+    if site['id'] == args.site_id:
+        print(json.dumps(site)
 
-print(json.dumps(config))
