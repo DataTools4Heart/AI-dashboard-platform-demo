@@ -266,10 +266,9 @@
                 "tool_statistics",
                 "tss_classification_by_nucleosomes",
                 "site_manifest",
-                "site_id",
                 "dataset_manifest",
-                "dataset_id",
-                "DL_ML_model"
+                "ML_DL_model",
+                "ML_DL_model_coefficients"
               ]
             }
           },
@@ -460,8 +459,8 @@
                 "tss_classification_by_nucleosomes",
                 "site_manifest",
                 "dataset_manifest",
-                "data_quality_report",
-                "DL_ML_model_coefficients"
+                "ML_DL_model",
+                "ML_DL_model_coefficients"
               ]
             }
           },
@@ -700,7 +699,11 @@
                   "structure",
                   "tool_intermediate_file",
                   "tool_statistics",
-                  "tss_classification_by_nucleosomes"
+                  "tss_classification_by_nucleosomes",
+                  "site_manifest",
+                  "dataset_manifest",
+                  "ML_DL_model",
+                  "ML_DL_model_coefficients"
                 ]
               },
               "file_path": {
