@@ -23,18 +23,18 @@ services:
     networks:
             open-vre:
                 ipv4_address: 172.21.0.10
-  mongo_seed:
-    container_name: mongo_seed
-    image: mongo
-    links:
-      - my-mongodb
-    volumes:
-      - ./mongo-seed:/mongo-seed
-    command:
-      /mongo-seed/import.sh
+  # mongo_seed:
+  #   container_name: mongo_seed
+  #   image: mongo
+  #   links:
+  #     - my-mongodb
+  #   volumes:
+  #     - ./mongo-seed:/mongo-seed
+  #   command:
+  #     /mongo-seed/import.sh
 
-    networks:
-      - open-vre
+  #   networks:
+  #     - open-vre
 
   postgres:
     container_name: postgres
