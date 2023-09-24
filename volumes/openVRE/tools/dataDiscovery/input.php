@@ -3,6 +3,8 @@
 require __DIR__."/../../../config/bootstrap.php";
 redirectOutside();
 
+$DT4HSites = getSitesInfo();
+
 InputTool_checkRequest($_REQUEST);
 
 $from = InputTool_getOrigin($_REQUEST);
@@ -14,10 +16,6 @@ $dirName = InputTool_getDefExName();
 // get tool details
 $toolId = "siteDiscovery";
 $tool   = getTool_fromId($toolId,1);
-
-// get DT4H sites
-
-$DT4HSites = $GLOBALS['sitesCol']->find()->toArray();
 
 ?>
 

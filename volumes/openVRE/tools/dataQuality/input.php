@@ -15,10 +15,6 @@ $dirName = InputTool_getDefExName();
 $toolId = "siteDiscovery";
 $tool   = getTool_fromId($toolId,1);
 
-// get DT4H sites
-
-$DT4HSites = $GLOBALS['sitesCol']->find()->toArray();
-
 ?>
 
 <?php require "../../htmlib/header.inc.php"; ?>
