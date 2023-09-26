@@ -50,6 +50,7 @@ $GLOBALS['tool_dev_sample']     = $GLOBALS['root']."/install/data/tool_schemas/t
 $GLOBALS['tool_io_dev_sample']  = $GLOBALS['root']."/install/data/tool_schemas/tool_specification/examples/example_io.json"; // template for tool registration - step 1 I/O
 
 // Oauth2 authentification
+$GLOBALS['auth_required']          = True; // Forces login
 $GLOBALS['auth_credentials']       = __DIR__."/oauth2.conf"; // oauth2 client credentials
 $GLOBALS['authAdmin_credentials']  = __DIR__."/oauth2_admin.conf"; // oauth2 client credentials with admin privileges
 #$GLOBALS['authServer']             = 'http://84.88.186.195:8089/auth'; // external oauth2 server
