@@ -12,7 +12,7 @@ list($rerunParams,$inPaths) = InputTool_getPathsAndRerun($_REQUEST);
 $dirName = InputTool_getDefExName();
 
 // get tool details
-$toolId = "siteDiscovery";
+$toolId = "dataQuality";
 $tool   = getTool_fromId($toolId,1);
 
 ?>

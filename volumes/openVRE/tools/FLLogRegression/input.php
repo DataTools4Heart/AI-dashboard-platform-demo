@@ -12,8 +12,12 @@ list($rerunParams,$inPaths) = InputTool_getPathsAndRerun($_REQUEST);
 $dirName = InputTool_getDefExName();
 
 // get tool details
-$toolId = "dataMaterialize";
+$toolId = "FLLogRegression";
 $tool   = getTool_fromId($toolId,1);
+
+// get DT4H sites
+
+$DT4HSites = $GLOBALS['sitesCol']->find()->toArray();
 
 ?>
 
