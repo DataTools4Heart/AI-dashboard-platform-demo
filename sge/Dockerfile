@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update -y && apt-get install -y gnupg2 vim
+RUN apt-get update -y && apt-get install -y gnupg2 vim g++
 
 RUN echo 'deb http://deb.debian.org/debian/ buster main contrib non-free\n\
 deb http://security.debian.org/debian-security/ buster/updates main contrib non-free\n' > /etc/apt/sources.list.d/debian.list
