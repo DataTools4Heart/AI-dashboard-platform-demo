@@ -3,7 +3,8 @@
 require __DIR__."/../../../config/bootstrap.php";
 redirectOutside();
 
-InputTool_checkRequest($_REQUEST);
+// not needed as no input files
+// InputTool_checkRequest($_REQUEST);
 
 $from = InputTool_getOrigin($_REQUEST);
 
@@ -19,53 +20,46 @@ $tool   = getTool_fromId($toolId,1);
 
 $DT4HSites = $GLOBALS['sitesCol']->find()->toArray();
 
+file_put_contents(
+	$GLOBALS['shared']."public/DT4H_Sites.json",
+	json_encode($DT4HSites, $flags=JSON_PRETTY_PRINT)
+);
+
 ?>
 
 <?php require "../../htmlib/header.inc.php"; ?>
 
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-container-bg-solid page-sidebar-fixed">
-  <div class="page-wrapper">
+	<div class="page-wrapper">
 
-  <?php require "../../htmlib/top.inc.php"; ?>
-  <?php require "../../htmlib/menu.inc.php"; ?>
+<?php require "../../htmlib/top.inc.php"; ?>
+<?php require "../../htmlib/menu.inc.php"; ?>
 
     <!-- BEGIN CONTENT -->
-    <div class="page-content-wrapper">
-	<!-- BEGIN CONTENT BODY -->
-	<div class="page-content">
-    	<!-- BEGIN PAGE HEADER-->
-    	<!-- BEGIN PAGE BAR -->
-    	<div class="page-bar">
-    	    <ul class="page-breadcrumb">
-    	      <li>
-    		  <a href="home/">Home</a>
-    		  <i class="fa fa-circle"></i>
-    	      </li>
-    	      <li>
-    		  <a href="workspace/">User Workspace</a>
-    		  <i class="fa fa-circle"></i>
-    	      </li>
-    	      <li>
-    		  <span>Tools</span>
-    		  <i class="fa fa-circle"></i>
-    	      </li>
-    	      <li>
-    	      <span><?php echo $tool['name']; ?></span>
-    	      </li>
-    	    </ul>
-    	</div>
-    	<!-- END PAGE BAR -->
+	    <div class="page-content-wrapper">
+			<!-- BEGIN CONTENT BODY -->
+				<div class="page-content">
+    			<!-- BEGIN PAGE HEADER-->
+    			<!-- BEGIN PAGE BAR -->
+    				<div class="page-bar">
+    	    			<ul class="page-breadcrumb">
+    	      				<li><a href="home/">Home</a><i class="fa fa-circle"></i></li>
+    	      				<li><a href="workspace/">User Workspace</a><i class="fa fa-circle"></i></li>
+    	      				<li><span>Tools</span><i class="fa fa-circle"></i></li>
+    	      				<li><span><?php echo $tool['name']; ?></span></li>
+    	    			</ul>
+    				</div>
+    			<!-- END PAGE BAR -->
 
-    	<!-- BEGIN PAGE TITLE-->
-    	<h1 class="page-title"> <?php echo $tool['title']; ?> </h1>
-    	<!-- END PAGE TITLE-->
-
-    	<!-- END PAGE HEADER-->
-    	<div class="row">
-    		<!-- SHOW ERRORS -->
-    		<div class="col-md-12">
+				<!-- BEGIN PAGE TITLE-->
+			    	<h1 class="page-title"> <?php echo $tool['title']; ?> </h1>
+    			<!-- END PAGE TITLE-->
+    			<!-- END PAGE HEADER-->
+			    	<div class="row">
+    			<!-- SHOW ERRORS -->
+    					<div class="col-md-12">
     		<?php if(isset($_SESSION['errorData'])) { ?>
-    			<div class="alert alert-warning">
+    						<div class="alert alert-warning">
     			<?php foreach($_SESSION['errorData'] as $subTitle=>$txts){
     				print "$subTitle<br/>";
     				foreach($txts as $txt){
@@ -74,116 +68,114 @@ $DT4HSites = $GLOBALS['sitesCol']->find()->toArray();
     			}
     			unset($_SESSION['errorData']);
     			?>
-    			</div>
+    						</div>
     		<?php } ?>
 
-    		<!-- SHOW  -->
-    		<?php if($from == "tool") { ?>
-		    <div class="row">
-    			<div class="col-md-12">
-    			    <div class="mt-element-step">
-    				<div class="row step-line">
-    				    <div class="col-md-6 mt-step-col first active">
-    				    	<div class="mt-step-number bg-white">1</div>
-    					<div class="mt-step-title uppercase font-grey-cascade">Select tool</div>
-    				    </div>
-    				    <div class="col-md-6 mt-step-col last active">
-    					<div class="mt-step-number bg-white">2</div>
-    					<div class="mt-step-title uppercase font-grey-cascade">Configure tool</div>
-    				    </div>
-    				</div>
-    			    </div>
-    			 </div>
-    		    </div>
-
+    			<!-- SHOW  -->
+    		<?php if ($from == "tool") { ?>
+		    				<div class="row">
+    							<div class="col-md-12">
+    			    				<div class="mt-element-step">
+    									<div class="row step-line">
+    				    					<div class="col-md-6 mt-step-col first active">
+    				    						<div class="mt-step-number bg-white">1</div>
+    											<div class="mt-step-title uppercase font-grey-cascade">Select tool</div>
+    			    						</div>
+    			 							<div class="col-md-6 mt-step-col last active">
+    											<div class="mt-step-number bg-white">2</div>
+    											<div class="mt-step-title uppercase font-grey-cascade">Configure tool</div>
+    				   						 </div>
+    									</div>
+    			    				</div>
+    			 				</div>
+    		    			</div>
     		<?php } ?>
- 		<form action="#" class="horizontal-form" id="tool-input-form">
-		    <input type="hidden" name="tool" value="<?php echo $toolId;?>" />
-		    <input type="hidden" id="base-url"     value="<?php echo $GLOBALS['BASEURL']; ?>"/>
+					 		<form action="#" class="horizontal-form" id="tool-input-form">
+		    					<input type="hidden" name="tool" value="<?php echo $toolId;?>" />
+		    					<input type="hidden" id="base-url" value="<?php echo $GLOBALS['BASEURL']; ?>"/>
+							<!-- BEGIN PORTLET 1: PROJECT -->
+		 						<div class="portlet box blue-oleo">
+		     						<div class="portlet-title">
+			 							<div class="caption">
+			   								<div style="float:left;margin-right:20px;"> <i class="fa fa-check-square-o" ></i> Project</div>
+			 							</div>
+		     						</div>
+		     						<div class="portlet-body form">
+		       							<div class="form-body">
+			   								<div class="row">
+			       								<div class="col-md-6">
+				   									<div class="form-group">
+				       									<label class="control-label">Select Project</label>
+														<?php InputTool_getSelectProjects(); ?>
+				   									</div>
+			       								</div>
+			       							<div class="col-md-6">
+				   								<div class="form-group">
+				       								<label class="control-label">Execution Name</label>
+				   									<input type="text" name="execution" id="dirName" class="form-control" value="<?php echo $dirName;?>">
+				   								</div>
+			       							</div>
+			   							</div>
+			   							<div class="row">
+			       							<div class="col-md-12">
+				   								<div class="form-group">
+				       								<label class="control-label">Description</label>
+			    									<textarea id="description" name="description" class="form-control" style="height:120px;" placeholder="Write a short description here..."></textarea>
+											   </div>
+			       							</div>
+			   							</div>
+		       						</div>
+		     					</div>
+		 					</div>
+		 				<!-- END PORTLET 1: PROJECT -->
 
-		<!-- BEGIN PORTLET 1: PROJECT -->
-		 <div class="portlet box blue-oleo">
-		     <div class="portlet-title">
-			 <div class="caption">
-			   <div style="float:left;margin-right:20px;"> <i class="fa fa-check-square-o" ></i> Project</div>
-			 </div>
-		     </div>
-		     <div class="portlet-body form">
-		       <div class="form-body">
-			   <div class="row">
-			       <div class="col-md-6">
-				   <div class="form-group">
-				       <label class="control-label">Select Project</label>
-					<?php InputTool_getSelectProjects(); ?>
-				   </div>
-			       </div>
-			       <div class="col-md-6">
-				   <div class="form-group">
-				       <label class="control-label">Execution Name</label>
-				       <input type="text" name="execution" id="dirName" class="form-control" value="<?php echo $dirName;?>">
-				   </div>
-			       </div>
-			   </div>
-			   <div class="row">
-			       <div class="col-md-12">
-				   <div class="form-group">
-				       <label class="control-label">Description</label>
-				       <textarea id="description" name="description" class="form-control" style="height:120px;" placeholder="Write a short description here..."></textarea>
-				   </div>
-			       </div>
-			   </div>
-		       </div>
-		     </div>
-		 </div>
-		 <!-- END PORTLET 1: PROJECT -->
+						<!-- BEGIN PORTLET 2: SECTION 1 -->
+		 					<div class="portlet box blue form-block-header" id="form-block-header1">
+		     					<div class="portlet-title">
+			 						<div class="caption">
+			  							<i class="fa fa-cogs" ></i> Tool settings
+			 						</div>
+		     					</div>
+		     					<div class="portlet-body form form-block" id="form-block1">
+			 						<div class="form-body">
 
-		 <!-- BEGIN PORTLET 2: SECTION 1 -->
-		 <div class="portlet box blue form-block-header" id="form-block-header1">
-		     <div class="portlet-title">
-			 <div class="caption">
-			  <i class="fa fa-cogs" ></i> Tool settings
-			 </div>
-		     </div>
-		     <div class="portlet-body form form-block" id="form-block1">
-			 <div class="form-body">
+			    				<!-- PRINT TOOL INPUT FILES -->
+									    <h4 class="form-section">File inputs</h4>
+										<div class="row">
 
-    				<!-- PRINT TOOL INPUT FILES -->
-			     <h4 class="form-section">File inputs</h4>
+											<div class="col-md-12">
+							<?php $ff = matchFormat_File($tool['input_files_public']['DT4H_sites']['file_type'], $inPaths); ?>
+							<?php InputTool_printSelectFile($tool['input_files_public']['DT4H_sites'], $rerunParams['DT4H_sites'], $ff[0], false, true); ?>
+											</div>
+			     						</div>
 
-			     <div class="row">
+									<input type="hidden" class="form-field-enabled" name="input_files[]" value="dummy_input">
+				    				<!-- PRINT TOOL ARGUMENTS -->
+			    						<h4 class="form-section">Settings</h4>
 
-					<div class="col-md-12">
-						<?php $ff = matchFormat_File($tool['input_files_public']['DT4H_sites']['file_type'], $inPaths); ?>
-						<?php InputTool_printSelectFile($tool['input_files_public']['DT4H_sites'], $rerunParams['DT4H_sites'], $ff[0], false, true); ?>
-					</div>
-			     </div>
+										<?php InputTool_printSettings($tool['arguments'], $rerunParams); ?>
+									</div>
+		     					</div>
+		 					</div>
+		 				</div>
+		 			<!-- END PORTLET 2: SECTION 1 -->
 
-    				<!-- PRINT TOOL ARGUMENTS -->
-			     <h4 class="form-section">Settings</h4>
+						<div class="alert alert-danger err-nd display-hide">
+    		  				<strong>Error!</strong> You forgot to fill out some mandatory fields, please check them before submit the form.
+    	      			</div>
 
-			     <?php InputTool_printSettings($tool['arguments'], $rerunParams); ?>
-			</div>
-		     </div>
-		 </div>
-		 </div>
-		 <!-- END PORTLET 2: SECTION 1 -->
+			 	   	    <div class="alert alert-warning warn-nd display-hide">
+    		  				<strong>Warning!</strong> At least one analysis should be selected.
+    	      			</div>
 
-    	      <div class="alert alert-danger err-nd display-hide">
-    		  <strong>Error!</strong> You forgot to fill out some mandatory fields, please check them before submit the form.
-    	      </div>
-
-    	      <div class="alert alert-warning warn-nd display-hide">
-    		  <strong>Warning!</strong> At least one analysis should be selected.
-    	      </div>
-
-    	      <div class="form-actions">
-    		  <button type="submit" class="btn blue" style="float:right;">
-    		      <i class="fa fa-check"></i> Compute</button>
-    	      </div>
-    	      </form>
-    	    </div>
-    	</div>
-	</div>
+			    	   	<div class="form-actions">
+    						<button type="submit" class="btn blue" style="float:right;">
+    		      			<i class="fa fa-check"></i> Compute</button>
+    	      			</div>
+    	      		</form>
+    	    	</div>
+    		</div>
+		</div>
 	<!-- END CONTENT BODY -->
     </div>
     <!-- END CONTENT -->
@@ -191,13 +183,13 @@ $DT4HSites = $GLOBALS['sitesCol']->find()->toArray();
 	<div class="modal-dialog modal-lg">
 	    <div class="modal-content">
 	    <div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-		<h4 class="modal-title">Select file(s)</h4>
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+			<h4 class="modal-title">Select file(s)</h4>
 	    </div>
 	    <div class="modal-body"><div id="loading-datatable"><div id="loading-spinner">LOADING</div></div></div>
 	    <div class="modal-footer">
-		<button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
-		<button type="button" class="btn green btn-modal-dts2-ok" disabled>Accept</button>
+			<button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+			<button type="button" class="btn green btn-modal-dts2-ok" disabled>Accept</button>
 	    </div>
 	</div>
 	<!-- /.modal-content -->
@@ -206,10 +198,8 @@ $DT4HSites = $GLOBALS['sitesCol']->find()->toArray();
     <!-- /.modal-dialog -->
 </div>
 
-
 <?php
 
 require "../../htmlib/footer.inc.php";
 require "../../htmlib/js.inc.php";
 
-?>
