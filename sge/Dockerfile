@@ -27,7 +27,8 @@ RUN echo "application:application" | chpasswd
 ADD setup_gridengine.sh /usr/local/bin/setup_gridengine.sh
 RUN chmod +x /usr/local/bin/setup_gridengine.sh
 
-CMD /usr/local/bin/setup_gridengine.sh && qconf -as front_end.dockerized_vre_open-vre && tail -f /var/spool/gridengine/qmaster/messages
+#CMD /usr/local/bin/setup_gridengine.sh && qconf -as front_end.dockerized_vre_open-vre && tail -f /var/spool/gridengine/qmaster/messages
+CMD /usr/local/bin/setup_gridengine.sh && qconf -as front_end.guimockup_open-vre && tail -f /var/spool/gridengine/qmaster/messages
 
 
 

@@ -1,4 +1,4 @@
-version: "2.4"
+version: "2.2"
 
 services:
   my-mongodb:
@@ -21,20 +21,19 @@ services:
       - ./volumes/mongo_data:/data/db
       - ./mongodb/mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh:ro
     networks:
-            open-vre:
-                ipv4_address: 172.21.0.10
-  # mongo_seed:
-  #   container_name: mongo_seed
-  #   image: mongo
-  #   links:
-  #     - my-mongodb
-  #   volumes:
-  #     - ./mongo-seed:/mongo-seed
-  #   command:
-  #     /mongo-seed/import.sh
-
-  #   networks:
-  #     - open-vre
+        open-vre:
+            ipv4_address: 172.23.0.10
+  mongo_seed:
+    container_name: mongo_seed
+    image: mongo
+    links:
+      - my-mongodb
+    volumes:
+      - ./mongo-seed:/mongo-seed
+    command:
+      /mongo-seed/import.sh
+    networks:
+      - open-vre
 
   postgres:
     container_name: postgres
@@ -45,7 +44,7 @@ services:
        POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     networks:
               open-vre:
-                 ipv4_address: 172.21.0.13
+                 ipv4_address: 172.23.0.13
 
   keycloak:
     container_name: keycloak
@@ -71,7 +70,7 @@ services:
         - postgres
     networks:
               open-vre:
-                ipv4_address: 172.21.0.12
+                ipv4_address: 172.23.0.12
 
   sgecore:
     build:
@@ -91,10 +90,15 @@ services:
       - shared
     ports:
       - 6444:6444
+    #stdin_open: true # docker run -i
+    #tty: true        # docker run -t
+    #entrypoint: /bin/bash
 
   front_end:
     container_name: front_end
-    hostname: front_end.dockerized_vre_open-vre
+    hostname: front_end.guimockup_open-vre
+    extra_hosts:
+       - "linux-ehoc:192.168.1.226"
     build:
       context: './front_end/'
       #network: host
@@ -115,7 +119,7 @@ services:
     networks:
         shared:
         open-vre:
-          ipv4_address: 172.21.0.14
+          ipv4_address: 172.23.0.14
 
 networks:
   open-vre:
@@ -124,7 +128,7 @@ networks:
     #  com.docker.network.driver.mtu: 1442
     ipam:
       config:
-            - subnet: 172.21.0.0/24
+            - subnet: 172.23.0.0/24
 
   shared:
     external:
