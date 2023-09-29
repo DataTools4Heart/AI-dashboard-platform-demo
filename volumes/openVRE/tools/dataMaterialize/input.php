@@ -15,13 +15,10 @@ $dirName = InputTool_getDefExName();
 $toolId = "dataMaterialize";
 $tool   = getTool_fromId($toolId,1);
 
-
 $sites = getSitesInfo("data");
-
 ?>
-
 <?php require "../../htmlib/header.inc.php"; ?>
- 
+
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-container-bg-solid page-sidebar-fixed">
   <div class="page-wrapper">
 
@@ -36,21 +33,10 @@ $sites = getSitesInfo("data");
     	<!-- BEGIN PAGE BAR -->
     	<div class="page-bar">
     	    <ul class="page-breadcrumb">
-    	      <li>
-    		  <a href="home/">Home</a>
-    		  <i class="fa fa-circle"></i>
-    	      </li>
-    	      <li>
-    		  <a href="workspace/">User Workspace</a>
-    		  <i class="fa fa-circle"></i>
-    	      </li>
-    	      <li>
-    		  <span>Tools</span>
-    		  <i class="fa fa-circle"></i>
-    	      </li>
-    	      <li>
-    	      <span><?php echo $tool['name']; ?></span>
-    	      </li>
+    	      <li><a href="home/">Home</a> <i class="fa fa-circle"></i></li>
+    	      <li><a href="workspace/">User Workspace</a> <i class="fa fa-circle"></i></li>
+    	      <li><span>Tools</span> <i class="fa fa-circle"></i></li>
+    	      <li><span><?php echo $tool['name']; ?></span></li>
     	    </ul>
     	</div>
     	<!-- END PAGE BAR -->
@@ -75,7 +61,7 @@ $sites = getSitesInfo("data");
     			?>
     			</div>
     		<?php } ?>
-    		
+
     		<!-- SHOW  -->
     		<?php if($from == "tool") { ?>
 		    <div class="row">
@@ -99,7 +85,7 @@ $sites = getSitesInfo("data");
  		<form action="#" class="horizontal-form" id="tool-input-form">
 		    <input type="hidden" name="tool" value="<?php echo $toolId;?>" />
 		    <input type="hidden" id="base-url"     value="<?php echo $GLOBALS['BASEURL']; ?>"/>
-			
+
 		<!-- BEGIN PORTLET 1: PROJECT -->
 		 <div class="portlet box blue-oleo">
 		     <div class="portlet-title">
@@ -149,7 +135,7 @@ $sites = getSitesInfo("data");
 			       <div class="col-md-6">
 				   <div class="form-group">
 				       <label class="control-label">Type of execution</label>
-				       <input type="text" name="execution_type" class="form-control" readonly value="Federated Analysis">
+				       <input type="text" name="execution_type" class="form-control" readonly value="Federated">
 				   </div>
 			       </div>
 			       <div class="col-md-6">
@@ -201,23 +187,24 @@ $sites = getSitesInfo("data");
 			       </div>
 			       <div class="col-md-6">
 				   <div class="form-group">
-				       <label class="control-label">Available sites in the network (default: all active sites)</label>
-				       <select name="arguments_exec[site_list][]" class="form-control" multiple size="8">
+				       	<label class="control-label">Available sites in the network (default: all active sites)</label>
+				       	<select name="arguments_exec[site_list][]" class="form-control" multiple size="8">
 					<?php foreach ($sites as $site){
 						$op=($site['status']=='2'? 'selected': 'disabled')
 					?>
-					<option <?php echo $op;?> value="<?php echo $site['_id'];?>"> <?php echo $site['name'];?> </option>
+							<option <?php echo $op;?> value="<?php echo $site['_id'];?>"> <?= $site['_id']?> - <?=$site['name']?> </option>
 					<?php }?>
-					</select>
+						</select>
 				   </div>
 			       </div>
 			   </div>
-				
+
     				<!-- SET TOOL INPUT FILES -->
 			     <h5 class="form-section">File inputs</h5>
 
-				<input type="hidden" name="input_files_public_dir[example_infile_public]" value="relative-path-from-slash-shared_data-slash-public.txt" />
-
+				<!--Public file input example
+					<input type="hidden" name="input_files_public_dir[example_infile_public]" value="relative-path-from-slash-shared_data-slash-public.txt" />
+				-->
 			     <div class="row">
 <?php if( $_REQUEST["op"] == 0 ) {  ?>
 	<div class="col-md-12">
@@ -274,11 +261,11 @@ $sites = getSitesInfo("data");
 
     <!-- /.modal-dialog -->
 </div>
-    
- 
-<?php 
 
-require "../../htmlib/footer.inc.php"; 
+
+<?php
+
+require "../../htmlib/footer.inc.php";
 require "../../htmlib/js.inc.php";
 
 ?>
