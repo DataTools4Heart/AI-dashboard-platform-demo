@@ -90,6 +90,8 @@ services:
       - shared
     ports:
       - 6444:6444
+    extra_hosts:
+      - "front_end.guimockup_open-vre:172.23.0.14"
     #stdin_open: true # docker run -i
     #tty: true        # docker run -t
     #entrypoint: /bin/bash
@@ -98,7 +100,7 @@ services:
     container_name: front_end
     hostname: front_end.guimockup_open-vre
     extra_hosts:
-       - "linux-ehoc:${IP_HOST}"
+       - "${HOSTNAME}:${IP_HOST}"
     build:
       context: './front_end/'
       #network: host
