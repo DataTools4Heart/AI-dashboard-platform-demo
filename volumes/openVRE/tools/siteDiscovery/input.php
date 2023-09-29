@@ -18,11 +18,11 @@ $tool   = getTool_fromId($toolId,1);
 
 // get DT4H sites
 
-$DT4HSites = $GLOBALS['sitesCol']->find()->toArray();
+$sites = getSitesInfo("data");
 
 file_put_contents(
-	$GLOBALS['shared']."public/DT4H_Sites.json",
-	json_encode($DT4HSites, $flags=JSON_PRETTY_PRINT)
+	$GLOBALS['shared']."public/DT4H_sites.json",
+	json_encode($sites, $flags=JSON_PRETTY_PRINT)
 );
 
 ?>
@@ -128,8 +128,49 @@ file_put_contents(
 		     					</div>
 		 					</div>
 		 				<!-- END PORTLET 1: PROJECT -->
+								<!-- BEGIN PORTLET 2: EXECUTION SETTINGS -->
+		 <div class="portlet box blue-oleo">
+		     <div class="portlet-title">
+			 <div class="caption">
+			  <i class="fa fa-cogs" ></i> Execution settings
+			 </div>
+		     </div>
+		     <div class="portlet-body form">
+		       <div class="form-body">
+			   <div class="row">
+			       <div class="col-md-6">
+				   <div class="form-group">
+				       <label class="control-label">Type of execution</label>
+				       <input type="text" name="execution_type" class="form-control" readonly value="Federated">
+				   </div>
+			       </div>
+			       <div class="col-md-6">
+			       </div>
+			   </div>
+			   <div class="row">
+			       <div class="col-md-6">
+				   <div class="form-group">
+				       <label class="control-label">Enable Console logging</label>
+				       <input type="text" name="arguments_exec['enable_console_log']" class="form-control"  value=TRUE>
+				   </div>
+			       </div>
+			       <div class="col-md-6">
+				   <div class="form-group">
+				       <label class="control-label">Enable File logging</label>
+				       <input type="text" name="arguments_exec['enable_file_log']" class="form-control"  value=TRUE>
+				   </div>
+			       </div>
+			   </div>
 
-						<!-- BEGIN PORTLET 2: SECTION 1 -->
+		       </div>
+		     </div>
+		 </div>
+		 <!-- END PORTLET 2: EXECUTION SETTINGS -->
+
+
+
+
+						<!-- BEGIN PORTLET 3: SECTION 1 -->
 		 					<div class="portlet box blue form-block-header" id="form-block-header1">
 		     					<div class="portlet-title">
 			 						<div class="caption">
@@ -138,18 +179,31 @@ file_put_contents(
 		     					</div>
 		     					<div class="portlet-body form form-block" id="form-block1">
 			 						<div class="form-body">
+    				<!-- SET TOOL EXEC PARAMS -->
+					<h4 class="form-section" style="font-weight:500;" >Tool Name: Sites Update</h4>
+			   <div class="row">
+			       <div class="col-md-6">
+				    <ul>
+				    <li>Container Image:&nbsp;&nbsp; <?php echo $tool['infrastructure']['container_image']; ?></li>
+				    <li>Connectivity via:&nbsp;&nbsp;&nbsp; Rabbit MQ Broker (AMQPS)</li>
+				    <li>Launcher:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Docker</li>
+				    <li>Number of CPUs:&nbsp;&nbsp;&nbsp; 4</li>
+				    <li>Memory (Gb):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8</li>
 
+				    </ul>
+			       </div>
+			    </div>
 			    				<!-- PRINT TOOL INPUT FILES -->
 									    <h4 class="form-section">File inputs</h4>
-										<div class="row">
+										<input type="hidden" name="input_files_public_dir["DT4H_sites"]" value="public/DT4H_sites.json" />
+<!--										<div class="row">
 
 											<div class="col-md-12">
-							<?php $ff = matchFormat_File($tool['input_files_public']['DT4H_sites']['file_type'], $inPaths); ?>
-							<?php InputTool_printSelectFile($tool['input_files_public']['DT4H_sites'], $rerunParams['DT4H_sites'], $ff[0], false, true); ?>
+							<?php //$ff = matchFormat_File($tool['input_files']['DT4H_sites']['file_type'], $inPaths); ?>
+							<?php //InputTool_printSelectFile($tool['input_files']['DT4H_sites'], $rerunParams['DT4H_sites'], $ff[0], false, true); ?>
 											</div>
 			     						</div>
-
-									<input type="hidden" class="form-field-enabled" name="input_files[]" value="dummy_input">
+-->
 				    				<!-- PRINT TOOL ARGUMENTS -->
 			    						<h4 class="form-section">Settings</h4>
 

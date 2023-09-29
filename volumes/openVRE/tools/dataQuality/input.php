@@ -15,8 +15,8 @@ $dirName = InputTool_getDefExName();
 $toolId = "dataQuality";
 $tool   = getTool_fromId($toolId,1);
 
+$sites = getSitesInfo("data");
 ?>
-
 <?php require "../../htmlib/header.inc.php"; ?>
 
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-container-bg-solid page-sidebar-fixed">
@@ -33,21 +33,10 @@ $tool   = getTool_fromId($toolId,1);
     	<!-- BEGIN PAGE BAR -->
     	<div class="page-bar">
     	    <ul class="page-breadcrumb">
-    	      <li>
-    		  <a href="home/">Home</a>
-    		  <i class="fa fa-circle"></i>
-    	      </li>
-    	      <li>
-    		  <a href="workspace/">User Workspace</a>
-    		  <i class="fa fa-circle"></i>
-    	      </li>
-    	      <li>
-    		  <span>Tools</span>
-    		  <i class="fa fa-circle"></i>
-    	      </li>
-    	      <li>
-    	      <span><?php echo $tool['name']; ?></span>
-    	      </li>
+    	      <li><a href="home/">Home</a> <i class="fa fa-circle"></i></li>
+    	      <li><a href="workspace/">User Workspace</a> <i class="fa fa-circle"></i></li>
+    	      <li><span>Tools</span> <i class="fa fa-circle"></i></li>
+    	      <li><span><?php echo $tool['name']; ?></span></li>
     	    </ul>
     	</div>
     	<!-- END PAGE BAR -->
@@ -133,7 +122,47 @@ $tool   = getTool_fromId($toolId,1);
 		 </div>
 		 <!-- END PORTLET 1: PROJECT -->
 
-		 <!-- BEGIN PORTLET 2: SECTION 1 -->
+		<!-- BEGIN PORTLET 2: EXECUTION SETTINGS -->
+		 <div class="portlet box blue-oleo">
+		     <div class="portlet-title">
+			 <div class="caption">
+			  <i class="fa fa-cogs" ></i> Execution settings
+			 </div>
+		     </div>
+		     <div class="portlet-body form">
+		       <div class="form-body">
+			   <div class="row">
+			       <div class="col-md-6">
+				   <div class="form-group">
+				       <label class="control-label">Type of execution</label>
+				       <input type="text" name="execution_type" class="form-control" readonly value="Federated">
+				   </div>
+			       </div>
+			       <div class="col-md-6">
+			       </div>
+			   </div>
+			   <div class="row">
+			       <div class="col-md-6">
+				   <div class="form-group">
+				       <label class="control-label">Enable Console logging</label>
+				       <input type="text" name="arguments_exec['enable_console_log']" class="form-control"  value=TRUE>
+				   </div>
+			       </div>
+			       <div class="col-md-6">
+				   <div class="form-group">
+				       <label class="control-label">Enable File logging</label>
+				       <input type="text" name="arguments_exec['enable_file_log']" class="form-control"  value=TRUE>
+				   </div>
+			       </div>
+			   </div>
+
+		       </div>
+		     </div>
+		 </div>
+		 <!-- END PORTLET 2: EXECUTION SETTINGS -->
+
+
+		 <!-- BEGIN PORTLET 3: SECTION 1 -->
 		 <div class="portlet box blue form-block-header" id="form-block-header1">
 		     <div class="portlet-title">
 			 <div class="caption">
@@ -143,19 +172,45 @@ $tool   = getTool_fromId($toolId,1);
 		     <div class="portlet-body form form-block" id="form-block1">
 			 <div class="form-body">
 
-    				<!-- PRINT TOOL INPUT FILES -->
-			     <h4 class="form-section">File inputs</h4>
+    				<!-- SET TOOL EXEC PARAMS -->
+			   <h4 class="form-section" style="font-weight:500;" >Tool Name: Materialize Datasets</h4>
+			   <div class="row">
+			       <div class="col-md-6">
+				    <ul>
+				    <li>Container Image:&nbsp;&nbsp; <?php echo $tool['infrastructure']['container_image']; ?></li>
+				    <li>Connectivity via:&nbsp;&nbsp;&nbsp; Rabbit MQ Broker (AMQPS)</li>
+				    <li>Launcher:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Docker</li>
+				    <li>Number of CPUs:&nbsp;&nbsp;&nbsp; 4</li>
+				    <li>Memory (Gb):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8</li>
 
+				    </ul>
+			       </div>
+
+			   </div>
+
+    				<!-- SET TOOL INPUT FILES -->
+			     <h5 class="form-section">File inputs</h5>
+
+				<!--Public file input example
+					<input type="hidden" name="input_files_public_dir[example_infile_public]" value="relative-path-from-slash-shared_data-slash-public.txt" />
+				-->
 			     <div class="row">
-
-					<div class="col-md-12">
-						<?php $ff = matchFormat_File($tool['input_files_public']['DT4H_sites']['file_type'], $inPaths); ?>
-						<?php InputTool_printSelectFile($tool['input_files_public']['DT4H_sites'], $rerunParams['DT4H_sites'], $ff[0], false, true); ?>
-					</div>
+    <?php if( $_REQUEST["op"] == 0 ) {  ?>
+	                <div class="col-md-12">
+	<?php $ff = matchFormat_File($tool['input_files']['datasets']['file_type'], $inPaths);?>
+	<?php InputTool_printSelectFile($tool['input_files']['datasets'], $rerunParams['dataset_reference'], $ff[0], false, true);?>
+	                </div>
+    <?php } ?>
+	<?php if( $_REQUEST["op"] == 1 ) {  ?>
+	                <div class="col-md-12">
+	<?php $ff = matchFormat_File($tool['input_files']['manifest']['file_type'], $inPaths);?>
+	<?php InputTool_printSelectFile($tool['input_files']['manifest'], $rerunParams['data_manifest'], $ff[0], false, true);?>
+	                </div>
+    <?php } ?>
 			     </div>
 
-    				<!-- PRINT TOOL ARGUMENTS -->
-			     <h4 class="form-section">Settings</h4>
+    				<!-- SET TOOL ARGUMENTS -->
+			     <h5 class="form-section">Settings</h5>
 
 			     <?php InputTool_printSettings($tool['arguments'], $rerunParams); ?>
 			</div>
