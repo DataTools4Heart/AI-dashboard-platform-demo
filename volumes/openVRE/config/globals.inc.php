@@ -7,7 +7,7 @@
 
 // Main config
 #$GLOBALS['SERVER']    = "http://".$_SERVER['HTTP_HOST']; // domain
-$GLOBALS['SERVER']    = "http://linux-ehoc:8089"; // domain
+$GLOBALS['SERVER']    = "http://172.24.126.247:8089"; // domain
 $GLOBALS['BASEURL']   = "/"; // prefix url path. Set "/" for no prefix
 $GLOBALS['AppPrefix'] = "DT4H"; // project url acronym
 $GLOBALS['NAME']      = "DataTools4Heart UI"; // project name
@@ -53,7 +53,7 @@ $GLOBALS['tool_io_dev_sample']  = $GLOBALS['root']."/install/data/tool_schemas/t
 $GLOBALS['auth_required']          = True; // Forces login
 $GLOBALS['auth_credentials']       = __DIR__."/oauth2.conf"; // oauth2 client credentials
 $GLOBALS['authAdmin_credentials']  = __DIR__."/oauth2_admin.conf"; // oauth2 client credentials with admin privileges
-$GLOBALS['authServer']             = 'http://linux-ehoc:8080/auth';
+$GLOBALS['authServer']             = 'http://172.24.126.247:8080/auth';
 $GLOBALS['authRealm']              = 'open-vre'; // keycloak realm
 $GLOBALS['urlAuthorize' ]          = $GLOBALS['authServer'].'/realms/'.$GLOBALS['authRealm'].'/protocol/openid-connect/auth';     //get autorization_code
 $GLOBALS['urlAccessToken']         = $GLOBALS['authServer'].'/realms/'.$GLOBALS['authRealm'].'/protocol/openid-connect/token';    //get token
