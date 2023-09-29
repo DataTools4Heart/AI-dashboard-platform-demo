@@ -43,7 +43,7 @@ services:
        POSTGRES_USER: ${POSTGRES_USER}
        POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     networks:
-              open-vre:
+      open-vre:
                  ipv4_address: 172.23.0.13
 
   keycloak:
@@ -69,8 +69,8 @@ services:
     links:
         - postgres
     networks:
-              open-vre:
-                ipv4_address: 172.23.0.12
+        open-vre:
+             ipv4_address: 172.23.0.12
 
   sgecore:
     build:
@@ -98,7 +98,7 @@ services:
     container_name: front_end
     hostname: front_end.guimockup_open-vre
     extra_hosts:
-       - "linux-ehoc:192.168.1.226"
+       - "linux-ehoc:${IP_HOST}"
     build:
       context: './front_end/'
       #network: host
