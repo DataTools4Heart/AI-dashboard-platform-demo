@@ -1,0 +1,22 @@
+2023-09-19 13:24:51 | INFO: 0) Unpack information from JSON
+2023-09-19 13:24:51 | INFO: 1) Instantiate and Configure Tool
+2023-09-19 13:24:51 | INFO: 2) Run Tool
+
+-- Input data:
+{'DT4H_sites': 'DT4H_sites.json'}
+
+-- Arguments:
+{'execution': '/shared_data/userdata/user_1/run000', 'project': 'example', 'description': 'test', 'argument_name': 'Random String'}
+
+-- CWD:
+/shared_data/userdata/user_1/run000
+
+-- Expected output is:
+DT4H_sites_report.json
+
+-- Starting sites report
+['python3', '/home/site_discovery.py', '--config', 'DT4H_sites.json', '--output_path', 'DT4H_sites_report.json']
+2023-09-19 13:24:51 | PROGRESS: The execution finished successfully - FINISHED
+2023-09-19 13:24:51 | INFO: 3) Create information
+2023-09-19 13:24:51 | INFO: 4) Pack information to JSON
+2023-09-19 13:24:51 | PROGRESS: <myTool> tool successfully executed; see /shared_data/userdata/user_1/run000/out_metadata.json

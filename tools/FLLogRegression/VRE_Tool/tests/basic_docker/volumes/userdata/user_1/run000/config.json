@@ -1,0 +1,53 @@
+{
+    "_id": "siteDiscovery",
+    "input_files": [
+	    {
+            "name":"DT4H_sites",
+            "value": "input_1",
+            "description": "DT4H list of sites",
+            "help": "",
+            "file_type": ["JSON"],
+            "data_type": ["site_manifest"],
+            "required": true,
+            "allow_multiple":false
+        }
+    ],
+    "input_files_combinations": [],
+    "arguments": [
+        {
+            "name": "execution",
+            "value": "/shared_data/userdata/user_1/run000"
+        },
+        {
+            "name": "project",
+            "value": "example"
+        },
+        {
+            "name": "description",
+            "value": "test"
+        },
+        {
+            "name": "argument_name",
+            "value": "Random String"
+        }
+    ],
+    "output_files": [
+        {
+            "name": "DT4H_sites_report",
+            "required": true,
+            "allow_multiple": false,
+            "file":{
+                "file_type": "JSON",
+                "data_type": "site_manifest",
+                "meta_data": {
+                    "visible": true,
+                    "tool": "siteDiscovery",
+                    "description": "DT4H sites report"
+
+                },
+                "file_path": "DT4H_sites_report.json"
+            }
+
+        }
+    ]
+}
