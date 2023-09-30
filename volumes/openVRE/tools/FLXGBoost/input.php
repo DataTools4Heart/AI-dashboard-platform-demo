@@ -17,7 +17,7 @@ $tool   = getTool_fromId($toolId,1);
 
 // get DT4H sites
 
-$DT4HSites = $GLOBALS['sitesCol']->find()->toArray();
+$sites = getSitesInfo("data");
 
 ?>
 
@@ -136,9 +136,47 @@ $DT4HSites = $GLOBALS['sitesCol']->find()->toArray();
 		     </div>
 		 </div>
 		 <!-- END PORTLET 1: PROJECT -->
+<!-- BEGIN PORTLET 2: EXECUTION SETTINGS -->
+<div class="portlet box blue-oleo">
+		     <div class="portlet-title">
+			 <div class="caption">
+			  <i class="fa fa-cogs" ></i> Execution settings
+			 </div>
+		     </div>
+		     <div class="portlet-body form">
+		       <div class="form-body">
+			   <div class="row">
+			       <div class="col-md-6">
+				   <div class="form-group">
+				       <label class="control-label">Type of execution</label>
+				       <input type="text" name="execution_type" class="form-control" readonly value="Federated">
+				   </div>
+			       </div>
+			       <div class="col-md-6">
+			       </div>
+			   </div>
+			   <div class="row">
+			       <div class="col-md-6">
+				   <div class="form-group">
+				       <label class="control-label">Enable Console logging</label>
+				       <input type="text" name="arguments_exec['enable_console_log']" class="form-control"  value=TRUE>
+				   </div>
+			       </div>
+			       <div class="col-md-6">
+				   <div class="form-group">
+				       <label class="control-label">Enable File logging</label>
+				       <input type="text" name="arguments_exec['enable_file_log']" class="form-control"  value=TRUE>
+				   </div>
+			       </div>
+			   </div>
 
-		 <!-- BEGIN PORTLET 2: SECTION 1 -->
-		 <div class="portlet box blue form-block-header" id="form-block-header1">
+		       </div>
+		     </div>
+		 </div>
+		 <!-- END PORTLET 2: EXECUTION SETTINGS -->
+
+		 	 <!-- BEGIN PORTLET 3: SECTION 1 -->
+		 <div class="portlet box  blue-oleo form-block-header" id="form-block-header1">
 		     <div class="portlet-title">
 			 <div class="caption">
 			  <i class="fa fa-cogs" ></i> Tool settings
@@ -147,22 +185,63 @@ $DT4HSites = $GLOBALS['sitesCol']->find()->toArray();
 		     <div class="portlet-body form form-block" id="form-block1">
 			 <div class="form-body">
 
-    				<!-- PRINT TOOL INPUT FILES -->
-			     <h4 class="form-section">File inputs</h4>
+    				<!-- SET TOOL EXEC PARAMS -->
+			   <h4 class="form-section" style="font-weight:500;" >Tool Name: XGBoost</h4>
+			   <div class="row">
+			       <div class="col-md-6">
+				    <ul>
+				    <li>Container Image:&nbsp;&nbsp; <?php echo $tool['infrastructure']['container_image']; ?></li>
+				    <li>Connectivity via:&nbsp;&nbsp;&nbsp; Rabbit MQ Broker (AMQPS)</li>
+				    <li>Launcher:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Docker</li>
+				    <li>Number of CPUs:&nbsp;&nbsp;&nbsp; 4</li>
+				    <li>Memory (Gb):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8</li>
 
+				    </ul>
+			       </div>
+			       <div class="col-md-6">
+				   <div class="form-group">
+				       	<label class="control-label">Available sites in the network (default: all active sites)</label>
+				       	<select name="arguments_exec[site_list][]" class="form-control" multiple size="8">
+					<?php foreach ($sites as $site){
+						$op=($site['status']=='2'? 'selected': 'disabled')
+					?>
+							<option <?php echo $op;?> value="<?php echo $site['_id'];?>"> <?= $site['_id']?> - <?=$site['name']?> </option>
+					<?php }?>
+						</select>
+				   </div>
+			       </div>
+			   </div>
+
+    				<!-- SET TOOL INPUT FILES -->
+			     <h5 class="form-section">File inputs</h5>
+
+				<!--Public file input example
+					<input type="hidden" name="input_files_public_dir[example_infile_public]" value="relative-path-from-slash-shared_data-slash-public.txt" />
+				-->
 			     <div class="row">
-
-					<div class="col-md-12">
-						<?php $ff = matchFormat_File($tool['input_files_public']['DT4H_sites']['file_type'], $inPaths); ?>
-						<?php InputTool_printSelectFile($tool['input_files_public']['DT4H_sites'], $rerunParams['DT4H_sites'], $ff[0], false, true); ?>
-					</div>
+				 <?php if( $_REQUEST["op"] == 0 ) {  ?>
+	                <div class="col-md-12">
+	<?php $ff = matchFormat_File($tool['input_files']['parameters']['file_type'], $inPaths);?>
+	<?php InputTool_printSelectFile($tool['input_files']['parameters'], $rerunParams['FLCore_parameters'], $ff[0], false, true);?>
+	<?php $ff = matchFormat_File($tool['input_files']['datasets']['file_type'], $inPaths);?>
+	<?php InputTool_printSelectFile($tool['input_files']['datasets'], $rerunParams['dataset_reference'], $ff[0], false, true);?>
+	                </div>
+    <?php } ?>
+	<?php if( $_REQUEST["op"] == 1 ) {  ?>
+	                <div class="col-md-12">
+					<?php $ff = matchFormat_File($tool['input_files']['parameters']['file_type'], $inPaths);?>
+	<?php InputTool_printSelectFile($tool['input_files']['parameters'], $rerunParams['FLCore_parameters'], $ff[0], false, true);?>
+	<?php $ff = matchFormat_File($tool['input_files']['manifest']['file_type'], $inPaths);?>
+	<?php InputTool_printSelectFile($tool['input_files']['manifest'], $rerunParams['data_manifest'], $ff[0], false, true);?>
+	                </div>
+    <?php } ?>
 			     </div>
 
     				<!-- PRINT TOOL ARGUMENTS -->
-			     <h4 class="form-section">Settings</h4>
+			     <!--<h4 class="form-section">Settings</h4>
 
 			     <?php InputTool_printSettings($tool['arguments'], $rerunParams); ?>
-			</div>
+	--></div>
 		     </div>
 		 </div>
 		 </div>
@@ -177,7 +256,7 @@ $DT4HSites = $GLOBALS['sitesCol']->find()->toArray();
     	      </div>
 
     	      <div class="form-actions">
-    		  <button type="submit" class="btn blue" style="float:right;">
+    		  <button type="submit" class="btn red" style="float:right;">
     		      <i class="fa fa-check"></i> Compute</button>
     	      </div>
     	      </form>

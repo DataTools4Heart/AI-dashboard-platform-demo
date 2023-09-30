@@ -43,7 +43,7 @@ file_put_contents(
     			<!-- BEGIN PAGE BAR -->
     				<div class="page-bar">
     	    			<ul class="page-breadcrumb">
-    	      				<li><a href="home/">Home</a><i class="fa fa-circle"></i></li>
+ 							<li><a href="home/">Home</a><i class="fa fa-circle"></i></li>
     	      				<li><a href="workspace/">User Workspace</a><i class="fa fa-circle"></i></li>
     	      				<li><span>Tools</span><i class="fa fa-circle"></i></li>
     	      				<li><span><?php echo $tool['name']; ?></span></li>
@@ -58,21 +58,27 @@ file_put_contents(
 			    	<div class="row">
     			<!-- SHOW ERRORS -->
     					<div class="col-md-12">
-    		<?php if(isset($_SESSION['errorData'])) { ?>
+<?php
+if (isset($_SESSION['errorData'])) {
+?>
     						<div class="alert alert-warning">
-    			<?php foreach($_SESSION['errorData'] as $subTitle=>$txts){
-    				print "$subTitle<br/>";
-    				foreach($txts as $txt){
-    					print "<div style=\"margin-left:20px;\">$txt</div>";
-    				}
-    			}
-    			unset($_SESSION['errorData']);
-    			?>
-    						</div>
-    		<?php } ?>
+<?php
+	foreach($_SESSION['errorData'] as $subTitle=>$txts) {
+    	print "$subTitle<br/>";
+    	foreach($txts as $txt){
+    		print "<div style=\"margin-left:20px;\">$txt</div>";
+    	}
+	}
+	unset($_SESSION['errorData']);
+?>
+	  						</div>
+<?php
+}
+?>
 
     			<!-- SHOW  -->
-    		<?php if ($from == "tool") { ?>
+<?php
+if ($from == "tool") { ?>
 		    				<div class="row">
     							<div class="col-md-12">
     			    				<div class="mt-element-step">
@@ -89,7 +95,9 @@ file_put_contents(
     			    				</div>
     			 				</div>
     		    			</div>
-    		<?php } ?>
+<?php
+}
+?>
 					 		<form action="#" class="horizontal-form" id="tool-input-form">
 		    					<input type="hidden" name="tool" value="<?php echo $toolId;?>" />
 		    					<input type="hidden" id="base-url" value="<?php echo $GLOBALS['BASEURL']; ?>"/>
@@ -128,124 +136,105 @@ file_put_contents(
 		     					</div>
 		 					</div>
 		 				<!-- END PORTLET 1: PROJECT -->
-								<!-- BEGIN PORTLET 2: EXECUTION SETTINGS -->
-		 <div class="portlet box blue-oleo">
-		     <div class="portlet-title">
-			 <div class="caption">
-			  <i class="fa fa-cogs" ></i> Execution settings
-			 </div>
-		     </div>
-		     <div class="portlet-body form">
-		       <div class="form-body">
-			   <div class="row">
-			       <div class="col-md-6">
-				   <div class="form-group">
-				       <label class="control-label">Type of execution</label>
-				       <input type="text" name="execution_type" class="form-control" readonly value="Federated">
-				   </div>
-			       </div>
-			       <div class="col-md-6">
-			       </div>
-			   </div>
-			   <div class="row">
-			       <div class="col-md-6">
-				   <div class="form-group">
-				       <label class="control-label">Enable Console logging</label>
-				       <input type="text" name="arguments_exec['enable_console_log']" class="form-control"  value=TRUE>
-				   </div>
-			       </div>
-			       <div class="col-md-6">
-				   <div class="form-group">
-				       <label class="control-label">Enable File logging</label>
-				       <input type="text" name="arguments_exec['enable_file_log']" class="form-control"  value=TRUE>
-				   </div>
-			       </div>
-			   </div>
-
-		       </div>
-		     </div>
-		 </div>
-		 <!-- END PORTLET 2: EXECUTION SETTINGS -->
-
-
-
-
-						<!-- BEGIN PORTLET 3: SECTION 1 -->
-		 					<div class="portlet box blue form-block-header" id="form-block-header1">
+						<!-- BEGIN PORTLET 2: EXECUTION SETTINGS -->
+							<div class="portlet box blue-oleo">
 		     					<div class="portlet-title">
-			 						<div class="caption">
-			  							<i class="fa fa-cogs" ></i> Tool settings
-			 						</div>
+			 						<div class="caption"><i class="fa fa-cogs" ></i> Execution settings</div>
 		     					</div>
-		     					<div class="portlet-body form form-block" id="form-block1">
-			 						<div class="form-body">
-    				<!-- SET TOOL EXEC PARAMS -->
-					<h4 class="form-section" style="font-weight:500;" >Tool Name: Available Dataset Update</h4>
-			   <div class="row">
-			       <div class="col-md-6">
-				    <ul>
-				    <li>Container Image:&nbsp;&nbsp; <?php echo $tool['infrastructure']['container_image']; ?></li>
-				    <li>Connectivity via:&nbsp;&nbsp;&nbsp; Rabbit MQ Broker (AMQPS)</li>
-				    <li>Launcher:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Docker</li>
-				    <li>Number of CPUs:&nbsp;&nbsp;&nbsp; 4</li>
-				    <li>Memory (Gb):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8</li>
-
-				    </ul>
-			       </div>
-				   <div class="col-md-6">
-				   <div class="form-group">
-				       	<label class="control-label">Available sites in the network (default: all active sites)</label>
-				       	<select name="arguments_exec[site_list][]" class="form-control" multiple size="8">
-					<?php foreach ($sites as $site){
-						$op=($site['status']=='2'? 'selected': 'disabled')
-					?>
-							<option <?php echo $op;?> value="<?php echo $site['_id'];?>"> <?= $site['_id']?> - <?=$site['name']?> </option>
-					<?php }?>
-						</select>
-				   </div>
-			       </div>
-			    </div>
-			    				<!-- PRINT TOOL INPUT FILES -->
-									    <h4 class="form-section">File inputs</h4>
-										<input type="hidden" name="input_files_public_dir["DT4H_sites"]" value="public/DT4H_sites.json" />
-<!--										<div class="row">
-
-											<div class="col-md-12">
-							<?php //$ff = matchFormat_File($tool['input_files']['DT4H_sites']['file_type'], $inPaths); ?>
-							<?php //InputTool_printSelectFile($tool['input_files']['DT4H_sites'], $rerunParams['DT4H_sites'], $ff[0], false, true); ?>
-											</div>
-			     						</div>
--->
-				    				<!-- PRINT TOOL ARGUMENTS -->
-			    						<h4 class="form-section">Settings</h4>
-
-										<?php InputTool_printSettings($tool['arguments'], $rerunParams); ?>
-									</div>
-		     					</div>
-		 					</div>
+		     					<div class="portlet-body form">
+		       						<div class="form-body">
+			   							<div class="row">
+			       							<div class="col-md-6">
+				   								<div class="form-group">
+				       								<label class="control-label">Type of execution</label>
+				       								<input type="text" name="execution_type" class="form-control" readonly value="Federated">
+				   								</div>
+			       							</div>
+			       							<div class="col-md-6">
+			       						</div>
+			   						</div>
+			   						<div class="row">
+			       						<div class="col-md-6">
+				   							<div class="form-group">
+				       							<label class="control-label">Enable Console logging</label>
+				       							<input type="text" name="arguments_exec['enable_console_log']" class="form-control"  value=TRUE>
+				   							</div>
+			       						</div>
+			       						<div class="col-md-6">
+				   							<div class="form-group">
+				       							<label class="control-label">Enable File logging</label>
+				       							<input type="text" name="arguments_exec['enable_file_log']" class="form-control"  value=TRUE>
+				   							</div>
+			       						</div>
+			   						</div>
+								</div>
+		     				</div>
 		 				</div>
-		 			<!-- END PORTLET 2: SECTION 1 -->
+		 			<!-- END PORTLET 2: EXECUTION SETTINGS -->
 
-						<div class="alert alert-danger err-nd display-hide">
-    		  				<strong>Error!</strong> You forgot to fill out some mandatory fields, please check them before submit the form.
-    	      			</div>
-
-			 	   	    <div class="alert alert-warning warn-nd display-hide">
-    		  				<strong>Warning!</strong> At least one analysis should be selected.
-    	      			</div>
-
-			    	   	<div class="form-actions">
-    						<button type="submit" class="btn blue" style="float:right;">
-    		      			<i class="fa fa-check"></i> Compute</button>
-    	      			</div>
-    	      		</form>
-    	    	</div>
-    		</div>
-		</div>
-	<!-- END CONTENT BODY -->
-    </div>
-    <!-- END CONTENT -->
-    <div class="modal fade bs-modal-lg" id="modalDTStep2" tabindex="-1" role="basic" aria-hidden="true">
+					<!-- BEGIN PORTLET 3: SECTION 1 -->
+	 					<div class="portlet box blue form-block-header" id="form-block-header1">
+	     					<div class="portlet-title">
+		 						<div class="caption"><i class="fa fa-cogs" ></i> Tool settings</div>
+		     				</div>
+		     				<div class="portlet-body form form-block" id="form-block1">
+			 					<div class="form-body">
+    							<!-- SET TOOL EXEC PARAMS -->
+									<h4 class="form-section" style="font-weight:500;" >Tool Name: Available Dataset Update</h4>
+			   						<div class="row">
+			       						<div class="col-md-6">
+				    						<ul>
+				    							<li>Container Image:&nbsp;&nbsp; <?php echo $tool['infrastructure']['container_image']; ?></li>
+				    							<li>Connectivity via:&nbsp;&nbsp;&nbsp; Rabbit MQ Broker (AMQPS)</li>
+				    							<li>Launcher:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Docker</li>
+				    							<li>Number of CPUs:&nbsp;&nbsp;&nbsp; 4</li>
+				    							<li>Memory (Gb):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8</li>
+											</ul>
+			       						</div>
+				   						<div class="col-md-6">
+				   							<div class="form-group">
+				       							<label class="control-label">Available sites in the network (default: all active sites)</label>
+				       							<select name="arguments_exec[site_list][]" class="form-control" multiple size="8">
+<?php
+foreach ($sites as $site) {
+	$op=($site['status']=='2'? 'selected': 'disabled')
+?>
+													<option <?php echo $op;?> value="<?php echo $site['_id'];?>"> <?= $site['_id']?> - <?=$site['name']?> </option>
+<?php
+}
+?>
+												</select>
+				   							</div>
+			       						</div>
+			    					</div>
+			    				<!-- PRINT TOOL INPUT FILES -->
+<!--								    <h4 class="form-section">File inputs</h4>-->
+									<input type="hidden" name="input_files_public_dir["DT4H_sites"]" value="public/DT4H_sites.json" />
+				    			<!-- PRINT TOOL ARGUMENTS -->
+<!--			    					<h4 class="form-section">Settings</h4>
+									<?php InputTool_printSettings($tool['arguments'], $rerunParams); ?> -->
+								</div>
+		     				</div>
+		 				</div>
+		 			</div>
+		 		<!-- END PORTLET 2: SECTION 1 -->
+					<div class="alert alert-danger err-nd display-hide">
+   		  				<strong>Error!</strong> You forgot to fill out some mandatory fields, please check them before submit the form.
+   	      			</div>
+		 	   	    <div class="alert alert-warning warn-nd display-hide">
+  		  				<strong>Warning!</strong> At least one analysis should be selected.
+   	      			</div>
+		    	   	<div class="form-actions">
+   						<button type="submit" class="btn red" style="float:right;">	<i class="fa fa-check"></i> Compute</button>
+   	      			</div>
+    	      	</form>
+    	    </div>
+    	</div>
+	</div>
+<!-- END CONTENT BODY -->
+</div>
+<!-- END CONTENT -->
+<div class="modal fade bs-modal-lg" id="modalDTStep2" tabindex="-1" role="basic" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
 	    <div class="modal-content">
 	    <div class="modal-header">

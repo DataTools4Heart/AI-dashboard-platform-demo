@@ -163,7 +163,7 @@ $sites = getSitesInfo("data");
 
 
 		 <!-- BEGIN PORTLET 3: SECTION 1 -->
-		 <div class="portlet box blue form-block-header" id="form-block-header1">
+		 <div class="portlet box blue-oleo form-block-header" id="form-block-header1">
 		     <div class="portlet-title">
 			 <div class="caption">
 			  <i class="fa fa-cogs" ></i> Tool settings
@@ -210,13 +210,13 @@ $sites = getSitesInfo("data");
 			     </div>
 
     				<!-- SET TOOL ARGUMENTS -->
-			     <h5 class="form-section">Settings</h5>
+<!--			     <h5 class="form-section">Settings</h5>
 
-			     <?php InputTool_printSettings($tool['arguments'], $rerunParams); ?>
-			</div>
+			     <?php //InputTool_printSettings($tool['arguments'], $rerunParams); ?>
+	--></div>
 		     </div>
 		 </div>
-		 </div>
+		 </div>-
 		 <!-- END PORTLET 2: SECTION 1 -->
 
     	      <div class="alert alert-danger err-nd display-hide">
@@ -228,7 +228,7 @@ $sites = getSitesInfo("data");
     	      </div>
 
     	      <div class="form-actions">
-    		  <button type="submit" class="btn blue" style="float:right;">
+    		  <button type="submit" class="btn red" style="float:right;">
     		      <i class="fa fa-check"></i> Compute</button>
     	      </div>
     	      </form>

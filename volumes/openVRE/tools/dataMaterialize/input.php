@@ -20,25 +20,25 @@ $sites = getSitesInfo("data");
 <?php require "../../htmlib/header.inc.php"; ?>
 
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-container-bg-solid page-sidebar-fixed">
-  <div class="page-wrapper">
+  	<div class="page-wrapper">
 
   <?php require "../../htmlib/top.inc.php"; ?>
   <?php require "../../htmlib/menu.inc.php"; ?>
 
     <!-- BEGIN CONTENT -->
-    <div class="page-content-wrapper">
+    	<div class="page-content-wrapper">
 	<!-- BEGIN CONTENT BODY -->
-	<div class="page-content">
+		<div class="page-content">
     	<!-- BEGIN PAGE HEADER-->
     	<!-- BEGIN PAGE BAR -->
-    	<div class="page-bar">
-    	    <ul class="page-breadcrumb">
-    	      <li><a href="home/">Home</a> <i class="fa fa-circle"></i></li>
-    	      <li><a href="workspace/">User Workspace</a> <i class="fa fa-circle"></i></li>
-    	      <li><span>Tools</span> <i class="fa fa-circle"></i></li>
-    	      <li><span><?php echo $tool['name']; ?></span></li>
-    	    </ul>
-    	</div>
+    		<div class="page-bar">
+    	    	<ul class="page-breadcrumb">
+    	      		<li><a href="home/">Home</a> <i class="fa fa-circle"></i></li>
+    	      		<li><a href="workspace/">User Workspace</a> <i class="fa fa-circle"></i></li>
+    	      		<li><span>Tools</span> <i class="fa fa-circle"></i></li>
+    	      		<li><span><?php echo $tool['name']; ?></span></li>
+    	    	</ul>
+    		</div>
     	<!-- END PAGE BAR -->
 
     	<!-- BEGIN PAGE TITLE-->
@@ -163,7 +163,7 @@ $sites = getSitesInfo("data");
 
 
 		 <!-- BEGIN PORTLET 3: SECTION 1 -->
-		 <div class="portlet box blue form-block-header" id="form-block-header1">
+		 <div class="portlet box blue-oleo form-block-header" id="form-block-header1">
 		     <div class="portlet-title">
 			 <div class="caption">
 			  <i class="fa fa-cogs" ></i> Tool settings
@@ -215,10 +215,10 @@ $sites = getSitesInfo("data");
 			     </div>
 
     				<!-- SET TOOL ARGUMENTS -->
-			     <h5 class="form-section">Settings</h5>
+			    <!-- <h5 class="form-section">Settings</h5>
 
 			     <?php InputTool_printSettings($tool['arguments'], $rerunParams); ?>
-			</div>
+--></div>
 		     </div>
 		 </div>
 		 </div>
@@ -233,7 +233,7 @@ $sites = getSitesInfo("data");
     	      </div>
 
     	      <div class="form-actions">
-    		  <button type="submit" class="btn blue" style="float:right;">
+    		  <button type="submit" class="btn red" style="float:right;">
     		      <i class="fa fa-check"></i> Compute</button>
     	      </div>
     	      </form>
