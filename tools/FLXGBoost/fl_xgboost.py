@@ -9,6 +9,9 @@ parser = argparse.ArgumentParser(
 )
 
 parser.add_argument('--config', type=open, help="DT4H configuration", required=True)
+parser.add_argument('--param', type=open, help="Analysis parameters", required=True)
+parser.add_argument('--datasets', help="DT4H datasets")
+parser.add_argument('--manifest', help="DT4H datasets manifest")
 parser.add_argument('--output_path', action='store', help="Output file", required=True)
 
 args = parser.parse_args()

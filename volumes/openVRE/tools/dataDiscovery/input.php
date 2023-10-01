@@ -19,10 +19,11 @@ $tool   = getTool_fromId($toolId,1);
 // get DT4H sites
 
 $sites = getSitesInfo("data");
+$sites_all = getSitesInfo();
 
 file_put_contents(
 	$GLOBALS['shared']."public/DT4H_sites.json",
-	json_encode($sites, $flags=JSON_PRETTY_PRINT)
+	json_encode($sites_all, $flags=JSON_PRETTY_PRINT)
 );
 
 ?>
@@ -197,7 +198,7 @@ if ($from == "tool") { ?>
 				       							<select name="arguments_exec[site_list][]" class="form-control" multiple size="8">
 <?php
 foreach ($sites as $site) {
-	$op=($site['status']=='2'? 'selected': 'disabled')
+	$op=($site['status']=='1'? 'selected': 'disabled')
 ?>
 													<option <?php echo $op;?> value="<?php echo $site['_id'];?>"> <?= $site['_id']?> - <?=$site['name']?> </option>
 <?php
@@ -209,7 +210,7 @@ foreach ($sites as $site) {
 			    					</div>
 			    				<!-- PRINT TOOL INPUT FILES -->
 <!--								    <h4 class="form-section">File inputs</h4>-->
-									<input type="hidden" name="input_files_public_dir["DT4H_sites"]" value="public/DT4H_sites.json" />
+<input type="hidden" name="input_files_public_dir[DT4H_sites]" value="DT4H_sites.json" />
 				    			<!-- PRINT TOOL ARGUMENTS -->
 <!--			    					<h4 class="form-section">Settings</h4>
 									<?php InputTool_printSettings($tool['arguments'], $rerunParams); ?> -->

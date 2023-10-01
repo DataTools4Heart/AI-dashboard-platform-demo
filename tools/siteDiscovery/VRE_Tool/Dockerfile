@@ -1,5 +1,5 @@
 #INTEGRATE NEW TOOL CONTAINER
-FROM sitediscovery
+FROM sitediscovery_tool
 
 #---------- DO NOT EDIT BELOW HERE ------------------------------------------------------------#
 #INSTALL openVRE DEPENDENCIES

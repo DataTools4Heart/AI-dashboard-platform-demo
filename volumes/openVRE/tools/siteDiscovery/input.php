@@ -19,10 +19,11 @@ $tool   = getTool_fromId($toolId,1);
 // get DT4H sites
 
 $sites = getSitesInfo("data");
+$sites_all = getSitesInfo();
 
 file_put_contents(
 	$GLOBALS['shared']."public/DT4H_sites.json",
-	json_encode($sites, $flags=JSON_PRETTY_PRINT)
+	json_encode($sites_all, $flags=JSON_PRETTY_PRINT)
 );
 
 ?>
@@ -171,7 +172,7 @@ file_put_contents(
 
 
 						<!-- BEGIN PORTLET 3: SECTION 1 -->
-		 					<div class="portlet box blue form-block-header" id="form-block-header1">
+		 					<div class="portlet box blue-oleo form-block-header" id="form-block-header1">
 		     					<div class="portlet-title">
 			 						<div class="caption">
 			  							<i class="fa fa-cogs" ></i> Tool settings
@@ -194,9 +195,10 @@ file_put_contents(
 			       </div>
 			    </div>
 			    				<!-- PRINT TOOL INPUT FILES -->
-									    <h4 class="form-section">File inputs</h4>
-										<input type="hidden" name="input_files_public_dir["DT4H_sites"]" value="public/DT4H_sites.json" />
-<!--										<div class="row">
+								<input type="hidden" name="input_files_public_dir[DT4H_sites]" value="DT4H_sites.json" />
+<!--								<h4 class="form-section">File inputs</h4>
+
+										<div class="row">
 
 											<div class="col-md-12">
 							<?php //$ff = matchFormat_File($tool['input_files']['DT4H_sites']['file_type'], $inPaths); ?>
@@ -205,9 +207,9 @@ file_put_contents(
 			     						</div>
 -->
 				    				<!-- PRINT TOOL ARGUMENTS -->
-			    						<h4 class="form-section">Settings</h4>
+			    						<!--<h4 class="form-section">Settings</h4>
 
-										<?php InputTool_printSettings($tool['arguments'], $rerunParams); ?>
+										<?php InputTool_printSettings($tool['arguments'], $rerunParams); ?>-->
 									</div>
 		     					</div>
 		 					</div>
@@ -223,7 +225,7 @@ file_put_contents(
     	      			</div>
 
 			    	   	<div class="form-actions">
-    						<button type="submit" class="btn blue" style="float:right;">
+    						<button type="submit" class="btn red" style="float:right;">
     		      			<i class="fa fa-check"></i> Compute</button>
     	      			</div>
     	      		</form>

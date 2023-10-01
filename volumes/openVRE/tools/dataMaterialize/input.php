@@ -190,7 +190,7 @@ $sites = getSitesInfo("data");
 				       	<label class="control-label">Available sites in the network (default: all active sites)</label>
 				       	<select name="arguments_exec[site_list][]" class="form-control" multiple size="8">
 					<?php foreach ($sites as $site){
-						$op=($site['status']=='2'? 'selected': 'disabled')
+						$op=($site['status']=='1'? 'selected': 'disabled')
 					?>
 							<option <?php echo $op;?> value="<?php echo $site['_id'];?>"> <?= $site['_id']?> - <?=$site['name']?> </option>
 					<?php }?>
