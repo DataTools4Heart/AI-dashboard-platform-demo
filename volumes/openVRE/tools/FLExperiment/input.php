@@ -18,7 +18,7 @@ $tool   = getTool_fromId($toolId,1);
 // get DT4H sites
 
 $sites = getSitesInfo("data");
-$methods = ['LogRegression', 'XGBoost'];
+$methods = ['xgb', 'weighted_random_forest', 'linear_models', 'random_forest', 'logistic_regression'];
 
 
 ?>
@@ -214,7 +214,7 @@ $methods = ['LogRegression', 'XGBoost'];
 				       	<label class="control-label">Available sites in the network (default: all active sites)</label>
 				       	<select name="arguments_exec[site_list][]" class="form-control" multiple size="8">
 					<?php foreach ($sites as $site){
-						$op=($site['status']=='2'? 'selected': 'disabled')
+						$op=($site['status']=='1'? 'selected': 'disabled')
 					?>
 							<option <?php echo $op;?> value="<?php echo $site['_id'];?>"> <?= $site['_id']?> - <?=$site['name']?> </option>
 					<?php }?>

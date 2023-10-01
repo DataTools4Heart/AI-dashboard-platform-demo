@@ -14,6 +14,7 @@ $dirName = InputTool_getDefExName();
 // get tool details
 $toolId = "FLLogRegression";
 $tool   = getTool_fromId($toolId,1);
+$methods = ['logistic_regression'];
 
 // get DT4H sites
 
@@ -202,7 +203,7 @@ $sites = getSitesInfo("data");
 				       	<label class="control-label">Available sites in the network (default: all active sites)</label>
 				       	<select name="arguments_exec[site_list][]" class="form-control" multiple size="8">
 					<?php foreach ($sites as $site){
-						$op=($site['status']=='2'? 'selected': 'disabled')
+						$op=($site['status']=='1'? 'selected': 'disabled')
 					?>
 							<option <?php echo $op;?> value="<?php echo $site['_id'];?>"> <?= $site['_id']?> - <?=$site['name']?> </option>
 					<?php }?>
