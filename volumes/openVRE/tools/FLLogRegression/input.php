@@ -223,7 +223,7 @@ $sites = getSitesInfo("data");
 	<?php $ff = matchFormat_File($tool['input_files']['parameters']['file_type'], $inPaths);?>
 	<?php InputTool_printSelectFile($tool['input_files']['parameters'], $rerunParams['FLCore_parameters'], $ff[0], false, true);?>
 	<?php $ff = matchFormat_File($tool['input_files']['datasets']['file_type'], $inPaths);?>
-	<?php InputTool_printSelectFile($tool['input_files']['datasets'], $rerunParams['dataset_reference'], $ff[0], false, true);?>
+	<?php InputTool_printSelectFile($tool['input_files']['datasets'], $rerunParams['dataset_reference'], $ff, true, true);?>
 	                </div>
     <?php } ?>
 	<?php if( $_REQUEST["op"] == 1 ) {  ?>

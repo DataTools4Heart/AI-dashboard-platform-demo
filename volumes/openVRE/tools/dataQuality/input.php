@@ -173,7 +173,7 @@ $sites = getSitesInfo("data");
 			 <div class="form-body">
 
     				<!-- SET TOOL EXEC PARAMS -->
-			   <h4 class="form-section" style="font-weight:500;" >Tool Name: Materialize Datasets</h4>
+			   <h4 class="form-section" style="font-weight:500;" >Tool Name: Data Quality check</h4>
 			   <div class="row">
 			       <div class="col-md-6">
 				    <ul>
@@ -198,7 +198,7 @@ $sites = getSitesInfo("data");
     <?php if( $_REQUEST["op"] == 0 ) {  ?>
 	                <div class="col-md-12">
 	<?php $ff = matchFormat_File($tool['input_files']['datasets']['file_type'], $inPaths);?>
-	<?php InputTool_printSelectFile($tool['input_files']['datasets'], $rerunParams['dataset_reference'], $ff[0], false, true);?>
+	<?php InputTool_printSelectFile($tool['input_files']['datasets'], $rerunParams['dataset_reference'], $ff, true, true);?>
 	                </div>
     <?php } ?>
 	<?php if( $_REQUEST["op"] == 1 ) {  ?>
