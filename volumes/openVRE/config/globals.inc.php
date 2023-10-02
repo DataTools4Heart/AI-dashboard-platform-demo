@@ -9,9 +9,9 @@
 #$GLOBALS['SERVER']    = "http://".$_SERVER['HTTP_HOST']; // domain
 $GLOBALS['SERVER']    = "http://jlgclnx:8089"; // domain
 $GLOBALS['BASEURL']   = "/"; // prefix url path. Set "/" for no prefix
-$GLOBALS['AppPrefix'] = "DT4H"; // project url acronym
-$GLOBALS['NAME']      = "DataTools4Heart UI"; // project name
-$GLOBALS['SITETITLE'] = "DataTools4Heart | Virtual Research Environment"; // site title
+$GLOBALS['AppPrefix'] = "EUCAIM"; // project url acronym
+$GLOBALS['NAME']      = "European Cancer Images FLD"; // project name
+$GLOBALS['SITETITLE'] = "EUCAIM | Virtual Research Environment"; // site title
 $GLOBALS['TIMEOUT']   = 3600; // session and cookies timeout
 
 // Email
