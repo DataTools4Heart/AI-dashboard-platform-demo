@@ -1,0 +1,3 @@
+[submodule "front_end/openVRE"]
+	path = front_end/openVRE
+	url = git@gitlab-internal.bsc.es:fl/openvre-demo.git
