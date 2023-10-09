@@ -1,4 +1,4 @@
-''' DT4H Site Status. Obtain full technical status of DT4H sites
+''' EUCAIM Site Status. Obtain full technical status of EUCAIM sites
 '''
 import argparse
 import json
@@ -8,7 +8,7 @@ parser = argparse.ArgumentParser(
     description="retrieve status of a site"
 )
 
-parser.add_argument('--config', type=open, help="DT4H configuration", required=True)
+parser.add_argument('--config', type=open, help="EUCAIM configuration", required=True)
 parser.add_argument('--output_path', action='store', help="Output file", required=True)
 
 args = parser.parse_args()
