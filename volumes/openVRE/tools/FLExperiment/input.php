@@ -15,7 +15,7 @@ $dirName = InputTool_getDefExName();
 $toolId = "FLExperiment";
 $tool   = getTool_fromId($toolId,1);
 
-// get DT4H sites
+// get EUCAIM sites
 
 $sites = getSitesInfo("data");
 $methods = ['xgb', 'weighted_random_forest', 'linear_models', 'random_forest', 'logistic_regression'];
