@@ -102,14 +102,13 @@ services:
     container_name: front_end
     hostname: front_end.guimockup_open-vre
     extra_hosts:
-       - "${HOSTNAME}:${IP_HOST}"
+       - "${HOSTNAME}:172.23.0.1"
     build:
       context: './front_end/'
       #network: host
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./front_end/act_qmaster:/var/lib/gridengine/default/common/act_qmaster
-      - ./front_end/openVRE/public/assets:/var/www/html/openVRE/public/assets
       - ./volumes/openVRE/config:/var/www/html/openVRE/config
       - ./volumes/openVRE/tools:/var/www/html/openVRE/public/tools
       - ./volumes/shared_data:/shared_data
