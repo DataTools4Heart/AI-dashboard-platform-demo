@@ -1,0 +1,7 @@
+09/10/23 : 13:20:23 |  
+09/10/23 : 13:20:23 | Start job submission via SGE 
+09/10/23 : 13:20:23 | SGE job submission has CML = 'qsub -S /bin/bash -N 'DT4HUSER6516e88a5836b#.submit' -wd /shared_data/userdata/DT4HUSER6516e88a5836b/__PROJ65198f935c4d59.61509161/run006 -q testq /shared_data/userdata/DT4HUSER6516e88a5836b/__PROJ65198f935c4d59.61509161/run006/.submit' 
+09/10/23 : 13:20:23 | Job STDOUT returns: Your job 7 ("DT4HUSER6516e88a5836b#.submit") has been submitted 
+09/10/23 : 13:20:23 | The process  is currently running PID = 7 
+09/10/23 : 13:20:23 | USER:demo@bsc.es, ID:DT4HUSER6516e88a5836b, LAUNCHER:SGE, TOOL:siteDiscovery, PID:7 
+09/10/23 : 13:20:23 | JOB 7 FINISHED but with errors 
