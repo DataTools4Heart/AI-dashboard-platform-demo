@@ -1,0 +1,147 @@
+[
+    {
+        "site": "CHUP",
+        "datasets": [
+            {
+                "id": "EUCAIM100300",
+                "local_path": "/userdata/EUCAIM100300",
+                "metadata": {
+                    "count": 75,
+                    "other_metadata": {}
+                }
+            },
+            {
+                "id": "EUCAIM100304",
+                "local_path": "/userdata/EUCAIM100304",
+                "metadata": {
+                    "count": 71,
+                    "other_metadata": {}
+                }
+            },
+            {
+                "id": "EUCAIM100305",
+                "local_path": "/userdata/EUCAIM100305",
+                "metadata": {
+                    "count": 88,
+                    "other_metadata": {}
+                }
+            }
+        ]
+    },
+    {
+        "site": "FORTH",
+        "datasets": [
+            {
+                "id": "EUCAIM100304",
+                "local_path": "/userdata/EUCAIM100304",
+                "metadata": {
+                    "count": 12,
+                    "other_metadata": {}
+                }
+            },
+            {
+                "id": "EUCAIM100299",
+                "local_path": "/userdata/EUCAIM100299",
+                "metadata": {
+                    "count": 82,
+                    "other_metadata": {}
+                }
+            },
+            {
+                "id": "EUCAIM100300",
+                "local_path": "/userdata/EUCAIM100300",
+                "metadata": {
+                    "count": 71,
+                    "other_metadata": {}
+                }
+            }
+        ]
+    },
+    {
+        "site": "FPG",
+        "datasets": [
+            {
+                "id": "EUCAIM100304",
+                "local_path": "/userdata/EUCAIM100304",
+                "metadata": {
+                    "count": 28,
+                    "other_metadata": {}
+                }
+            },
+            {
+                "id": "EUCAIM100299",
+                "local_path": "/userdata/EUCAIM100299",
+                "metadata": {
+                    "count": 54,
+                    "other_metadata": {}
+                }
+            },
+            {
+                "id": "EUCAIM100301",
+                "local_path": "/userdata/EUCAIM100301",
+                "metadata": {
+                    "count": 20,
+                    "other_metadata": {}
+                }
+            }
+        ]
+    },
+    {
+        "site": "HPAH",
+        "datasets": [
+            {
+                "id": "EUCAIM100305",
+                "local_path": "/userdata/EUCAIM100305",
+                "metadata": {
+                    "count": 54,
+                    "other_metadata": {}
+                }
+            },
+            {
+                "id": "EUCAIM100301",
+                "local_path": "/userdata/EUCAIM100301",
+                "metadata": {
+                    "count": 45,
+                    "other_metadata": {}
+                }
+            },
+            {
+                "id": "EUCAIM100304",
+                "local_path": "/userdata/EUCAIM100304",
+                "metadata": {
+                    "count": 79,
+                    "other_metadata": {}
+                }
+            }
+        ]
+    },
+    {
+        "site": "HULAFE",
+        "datasets": [
+            {
+                "id": "EUCAIM100304",
+                "local_path": "/userdata/EUCAIM100304",
+                "metadata": {
+                    "count": 33,
+                    "other_metadata": {}
+                }
+            },
+            {
+                "id": "EUCAIM100300",
+                "local_path": "/userdata/EUCAIM100300",
+                "metadata": {
+                    "count": 77,
+                    "other_metadata": {}
+                }
+            },
+            {
+                "id": "EUCAIM100301",
+                "local_path": "/userdata/EUCAIM100301",
+                "metadata": {
+                    "count": 34,
+                    "other_metadata": {}
+                }
+            }
+        ]
+    }
+]
