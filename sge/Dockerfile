@@ -23,7 +23,7 @@ RUN apt-get update -y && apt-get install -y docker.io
 
 RUN useradd -m application
 RUN echo "application:application" | chpasswd
-
+RUN addgroup application docker
 ADD setup_gridengine.sh /usr/local/bin/setup_gridengine.sh
 RUN chmod +x /usr/local/bin/setup_gridengine.sh
 
