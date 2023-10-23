@@ -16,7 +16,7 @@ $toolId = "FLLogRegression";
 $tool   = getTool_fromId($toolId,1);
 $methods = ['logistic_regression'];
 
-// get EUCAIM sites
+// get project sites
 
 $sites = getSitesInfo("data");
 

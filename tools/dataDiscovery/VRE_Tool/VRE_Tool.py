@@ -136,7 +136,7 @@ class myTool(Tool):
             print(output_file_path)
             cmd = [
                 'python3', '/home/site_discovery.py',
-                '--config', input_files['EUCAIM_sites']
+                '--config', input_files['project_sites']
                 ,
                 '--output_path', output_file_path
             ]

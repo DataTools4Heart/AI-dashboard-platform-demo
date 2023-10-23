@@ -16,7 +16,7 @@ $toolId = "FLXGBoost";
 $tool   = getTool_fromId($toolId,1);
 
 
-// get EUCAIM sites
+// get project sites
 
 $sites = getSitesInfo("data");
 $methods = ['xgb'];

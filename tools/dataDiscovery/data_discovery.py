@@ -12,7 +12,7 @@ PROJECT = 'EUCAIM'
 FAKE_IDS = ['100299', '100300', '100304','100305','100301']
 MAX_DTS = 3
 
-parser.add_argument('--config', type=open, help="EUCAIM configuration", required=True)
+parser.add_argument('--config', type=open, help="Project configuration", required=True)
 parser.add_argument('--sites', action='store', help="Available sites", required=True)
 parser.add_argument('--output_path', action='store', help="Output file", required=True)
 
