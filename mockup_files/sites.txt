@@ -1,0 +1,9 @@
+HULAFE,Hospital Universitario La Fe Valencia,data
+UPV,Universidad Politécnica de Valencia,comp
+FORTH,IDRYMA Tecnologias,data
+DKFZ,Deutches Krebsforschungzentrum,both
+EMC,Erasmus MC,both
+MAG,Maggioli SPA,data
+UB,Universitat de Barcelona,both
+UMU,Umea Uniersitet,data
+BSC,Barcelona Supercomputing Center,comp
