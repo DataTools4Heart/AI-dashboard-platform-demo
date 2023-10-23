@@ -28,8 +28,8 @@ $GLOBALS['dbname_VRE']     = "openVRE"; // Database name
 
 //VRE installation paths
 $GLOBALS['root']       = dirname(__DIR__); // VRE root directory
-$GLOBALS['shared']     = "/shared_data/"; // VRE data directory$GLOBALS['logFile']    = $GLOBALS['shared']."/logs/application.log"; // Log file path
-
+$GLOBALS['shared']     = "/shared_data/"; // VRE data directory
+$GLOBALS['logFile']    = $GLOBALS['shared']."/logs/application.log"; // Log file path
 $GLOBALS['dataDir']    = $GLOBALS['shared']."userdata"; // User data directory
 $GLOBALS['pubDir']     = $GLOBALS['shared']."public"; // Public data directory
 $GLOBALS['sampleData'] = $GLOBALS['shared']."sampleData"; // Tool dataset directory
