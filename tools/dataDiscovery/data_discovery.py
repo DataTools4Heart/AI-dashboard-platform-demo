@@ -1,4 +1,4 @@
-''' DT4H Site Status. Obtain full technical status of DT4H sites
+''' Site Status. Obtain full technical status of project sites
 '''
 import argparse
 import json

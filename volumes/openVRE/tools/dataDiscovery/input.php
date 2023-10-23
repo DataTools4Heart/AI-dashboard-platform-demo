@@ -210,7 +210,7 @@ foreach ($sites as $site) {
 			    					</div>
 			    				<!-- PRINT TOOL INPUT FILES -->
 <!--								    <h4 class="form-section">File inputs</h4>-->
-<input type="hidden" name="input_files_public_dir[project_sites]" value="<?=$GLOBALS['AppPrefix']?>_sites.json" />
+<input type="hidden" name="input_files_public_dir[Sites]" value="<?=$GLOBALS['AppPrefix']?>_sites.json" />
 				    			<!-- PRINT TOOL ARGUMENTS -->
 <!--			    					<h4 class="form-section">Settings</h4>
 									<?php InputTool_printSettings($tool['arguments'], $rerunParams); ?> -->
