@@ -78,7 +78,7 @@ services:
     build:
       context: ./sge
       #network: host
-  environment:
+    environment:
       - DOCKER_GROUP:${DOCKER_GROUP}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock

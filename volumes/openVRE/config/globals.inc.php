@@ -132,7 +132,7 @@ $GLOBALS['placeholder_textarea'] = "Click right button to select file(s)"; // te
 
 
 // Cloud infrastructures
-$GLOBALS['cloud']              = "my_on_premises_cloud"; // VRE central cloud. Options are any of $GLOBALS['clouds']
+$GLOBALS['cloud']              = "my_on_premises_docker"; // VRE central cloud. Options are any of $GLOBALS['clouds']
 $GLOBALS['clouds'] = Array(
 		'my_on_premises_cloud' => array(
 			"http_host"	    => "www.mydomain.com",	     // used in getCurrentCloud
@@ -150,8 +150,8 @@ $GLOBALS['clouds'] = Array(
 			"http_host"	    => "localhost",	     // used in getCurrentCloud
 			"dataDir_fs"        => "/NFS/export/path/userdata/", // export path for NFS server
 			"pubDir_fs"         => "/NFS/export/path/public/",   // export path for NFS server
-			"dataDir_virtual"   => $GLOBALS['dataDir']."_tmp",
-			"pubDir_virtual"    => $GLOBALS['pubDir']."_tmp",
+			"dataDir_virtual"   => $GLOBALS['dataDir'],
+			"pubDir_virtual"    => $GLOBALS['pubDir'],
 			"PMESserver_domain" => "pmes.mydomain.com",
 			"PMESserver_port"   => "80",
 			"PMESserver_address"=> "/",

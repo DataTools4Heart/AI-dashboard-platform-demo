@@ -93,12 +93,12 @@ class myTool(Tool):
             output_type = output_metadata[0]['file']['file_type'].lower()
 
             # Tool Execution
-            self.run_site_discovery(input_files,output_file_path)
+            self.run_data_discovery(input_files, output_file_path)
             #HERE GOES YOUR TOOL'S FUNCTION EXECUTION
 
             # Validate output
             if os.path.isfile(output_file_path):
-                output_file_path= os.path.abspath(self.execution_path + "/" + output_file_path)
+                output_file_path= os.path.abspath(self.execution_path + "/" + os.path.basename(output_file_path))
                 output_files[output_id] = [(output_file_path, "file")]
 
                 return output_files, output_metadata
@@ -114,7 +114,7 @@ class myTool(Tool):
             logger.fatal(errstr)
             raise Exception(errstr)
 
-    def run_site_discovery(self, input_files, output_file_path):
+    def run_data_discovery(self, input_files, output_file_path):
         """
         The main function to run the pipeline. THIS IS WHERE YOUR CMD FOR THE DOCKER IMAGE SHOULD BE RUN
 
@@ -136,7 +136,7 @@ class myTool(Tool):
             print(output_file_path)
             cmd = [
                 'python3', '/home/site_discovery.py',
-                '--config', input_files['DT4H_sites']
+                '--config', input_files['Sites']
                 ,
                 '--output_path', output_file_path
             ]

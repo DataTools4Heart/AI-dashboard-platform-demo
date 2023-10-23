@@ -8,7 +8,7 @@ parser = argparse.ArgumentParser(
     description="retrieve status of a site"
 )
 
-parser.add_argument('--config', type=open, help="DT4H configuration", required=True)
+parser.add_argument('--config', type=open, help="Project sites configuration", required=True)
 parser.add_argument('--output_path', action='store', help="Output file", required=True)
 
 args = parser.parse_args()

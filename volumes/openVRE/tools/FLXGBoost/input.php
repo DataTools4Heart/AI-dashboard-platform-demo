@@ -16,7 +16,7 @@ $toolId = "FLXGBoost";
 $tool   = getTool_fromId($toolId,1);
 
 
-// get DT4H sites
+// get project sites
 
 $sites = getSitesInfo("data");
 $methods = ['xgb'];
@@ -292,4 +292,3 @@ $methods = ['xgb'];
 require "../../htmlib/footer.inc.php";
 require "../../htmlib/js.inc.php";
 
-?>
