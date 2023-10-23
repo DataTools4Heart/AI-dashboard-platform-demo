@@ -7,7 +7,7 @@
 
 // Main config
 #$GLOBALS['SERVER']    = "http://".$_SERVER['HTTP_HOST']; // domain
-$GLOBALS['SERVER']    = "http://84.88.187.154:8089"; // domain
+$GLOBALS['SERVER']    = "http://jlgclnx:8089"; // domain
 $GLOBALS['BASEURL']   = "/"; // prefix url path. Set "/" for no prefix
 $GLOBALS['AppPrefix'] = "EUCAIM"; // project url acronym
 $GLOBALS['NAME']      = "European Cancer Images FLD"; // project name
@@ -28,8 +28,8 @@ $GLOBALS['dbname_VRE']     = "openVRE"; // Database name
 
 //VRE installation paths
 $GLOBALS['root']       = dirname(__DIR__); // VRE root directory
-$GLOBALS['shared']     = "/shared_data/"; // VRE data directory
-$GLOBALS['logFile']    = $GLOBALS['shared']."/logs/application.log"; // Log file path
+$GLOBALS['shared']     = "/shared_data/"; // VRE data directory$GLOBALS['logFile']    = $GLOBALS['shared']."/logs/application.log"; // Log file path
+
 $GLOBALS['dataDir']    = $GLOBALS['shared']."userdata"; // User data directory
 $GLOBALS['pubDir']     = $GLOBALS['shared']."public"; // Public data directory
 $GLOBALS['sampleData'] = $GLOBALS['shared']."sampleData"; // Tool dataset directory
@@ -55,7 +55,7 @@ $GLOBALS['auth_credentials']       = __DIR__."/oauth2.conf"; // oauth2 client cr
 $GLOBALS['authAdmin_credentials']  = __DIR__."/oauth2_admin.conf"; // oauth2 client credentials with admin privileges
 #$GLOBALS['authServer']             = 'http://84.88.186.195:8089/auth'; // external oauth2 server
 #$GLOBALS['authServer']             = parse_url($_SERVER['HTTP_HOST'], PHP_URL_HOST).':8080/auth/'; // internal oauth2 server
-$GLOBALS['authServer']             = 'http://84.88.187.154:8080/auth'; // internal oauth2 server
+$GLOBALS['authServer']             = 'http://jlgbio2:8080/auth'; // internal oauth2 server
 $GLOBALS['authRealm']              = 'open-vre'; // keycloak realm
 $GLOBALS['urlAuthorize' ]          = $GLOBALS['authServer'].'/realms/'.$GLOBALS['authRealm'].'/protocol/openid-connect/auth';     //get autorization_code
 $GLOBALS['urlAccessToken']         = $GLOBALS['authServer'].'/realms/'.$GLOBALS['authRealm'].'/protocol/openid-connect/token';    //get token
