@@ -94,7 +94,7 @@ class myTool(Tool):
 
             # Tool Execution
             self.run_site_discovery(input_files,output_file_path)
-            #HERE GOES YOUR TOOL'S FUNCTION EXECUTION
+            # HERE GOES YOUR TOOL'S FUNCTION EXECUTION
 
             # Validate output
             if os.path.isfile(output_file_path):
@@ -103,11 +103,9 @@ class myTool(Tool):
 
                 return output_files, output_metadata
 
-            else:
-                errstr = "Output file {} not created. See logs.".format(output_file_path)
-                logger.fatal(errstr)
-                raise Exception(errstr)
-
+            errstr = f"Output file {output_file_path} not created. See logs."
+            logger.fatal(errstr)
+            raise Exception(errstr)
 
         except:
             errstr = "The execution failed. See logs."
@@ -163,6 +161,6 @@ class myTool(Tool):
             errstr = "The execution failed. See logs."
             logger.error(errstr)
             if rc is not None:
-                logger.error("RETVAL: {}".format(rc))
+                logger.error(f"RETVAL: {rc}")
             raise Exception(errstr)
 

@@ -1,5 +1,5 @@
 #INTEGRATE NEW TOOL CONTAINER
-FROM sitediscovery_tool
+FROM registry.gitlab.bsc.es/fl/dashboard-demo/sitediscovery_tool
 
 #---------- DO NOT EDIT BELOW HERE ------------------------------------------------------------#
 #INSTALL openVRE DEPENDENCIES
