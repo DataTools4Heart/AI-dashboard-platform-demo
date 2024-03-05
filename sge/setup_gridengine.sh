@@ -76,7 +76,7 @@ s_vmem                INFINITY
 h_vmem                INFINITY
 EOS
 
-qconf -Aq /tmp/qconf-aq.txt
+qconf -Aq /tmp/qconf-aq.txt 
 
 # avoid 'stdin: is not a tty'
 #sed -i -e 's/^mesg n//' /root/.profile
@@ -90,6 +90,3 @@ do
   qconf -as $HOST
   #qconf -as mail.domain.es
 done
-
-groupmod -g  $DOCKER_GROUP docker
-
