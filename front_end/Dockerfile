@@ -62,3 +62,6 @@ CMD /opt/docker/bin/entrypoint.sh supervisord
 #add cleaning step adjusting the document + sistema de cues
 #chmod u+x scripts/maintainance/cleanUsersData.php
 #crontab -e
+RUN apt install python3-pip libffi-dev -y
+RUN pip3 install --upgrade pip
+RUN pip3 install jupyter jupyterlab requests

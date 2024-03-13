@@ -137,6 +137,7 @@ services:
       - sgecore
     ports:
       - "8089:80"
+      - "8888:8888"
     networks:
       open-vre:
         ipv4_address: 172.21.0.14
