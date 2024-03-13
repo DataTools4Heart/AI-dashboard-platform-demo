@@ -12,14 +12,15 @@ list($rerunParams,$inPaths) = InputTool_getPathsAndRerun($_REQUEST);
 $dirName = InputTool_getDefExName();
 
 // get tool details
-$toolId = "FLXGBoost";
+$toolId = "FLExperiment";
 $tool   = getTool_fromId($toolId,1);
-
 
 // get project sites
 
 $sites = getSitesInfo("data");
-$methods = ['xgb'];
+$methods = ['xgb', 'weighted_random_forest', 'linear_models', 'random_forest', 'logistic_regression'];
+
+
 ?>
 
 <?php require "../../htmlib/header.inc.php"; ?>
@@ -187,7 +188,7 @@ $methods = ['xgb'];
 			 <div class="form-body">
 
     				<!-- SET TOOL EXEC PARAMS -->
-			   <h4 class="form-section" style="font-weight:500;" >Tool Name: XGBoost</h4>
+			   <h4 class="form-section" style="font-weight:500;" >Tool Name: Logistic Regression</h4>
 			   <div class="row">
 			       <div class="col-md-6">
 				    <ul>
@@ -196,9 +197,18 @@ $methods = ['xgb'];
 				    <li>Launcher:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Docker</li>
 				    <li>Number of CPUs:&nbsp;&nbsp;&nbsp; 4</li>
 				    <li>Memory (Gb):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8</li>
-
 				    </ul>
 			       </div>
+				   <div class="col-md-6">
+				   <div class="form-group">
+				       	<label class="control-label">Available Analysis methods</label>
+				       	<select name="arguments_exec[site_list][]" class="form-control">
+					<?php foreach ($methods as $meth){?>
+							<option value="<?=$meth?>"> <?= $meth?> </option>
+					<?php }?>
+						</select>
+				   </div>
+					</div>
 			       <div class="col-md-6">
 				   <div class="form-group">
 				       	<label class="control-label">Available sites in the network (default: all active sites)</label>
@@ -292,3 +302,4 @@ $methods = ['xgb'];
 require "../../htmlib/footer.inc.php";
 require "../../htmlib/js.inc.php";
 
+?>
