@@ -9,9 +9,10 @@
 #$GLOBALS['SERVER']    = "http://".$_SERVER['HTTP_HOST']; // domain
 $GLOBALS['SERVER']    = "{FQDN_PROTOCOL]://{FQDN_HOST}:8089"; // domain
 $GLOBALS['BASEURL']   = "/"; // prefix url path. Set "/" for no prefix
+$GLOBALS['RunningMode'] = 'local'; // either portal or local
 $GLOBALS['AppPrefix'] = "DT4H"; // project url acronym
 $GLOBALS['NAME']      = "DataTools4Heart UI"; // project name
-$GLOBALS['SITETITLE'] = "DataTools4Heart | Virtual Research Environment"; // site title
+$GLOBALS['SITETITLE'] = "DataTools4Heart; // site title
 $GLOBALS['TIMEOUT']   = 3600; // session and cookies timeout
 
 // Email

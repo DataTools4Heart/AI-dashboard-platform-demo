@@ -32,9 +32,11 @@ RUN apt-get install -y mongodb-org
 ADD setup.sh /usr/local/bin/setup.sh
 RUN chmod +x /usr/local/bin/setup.sh
 
+RUN apt install python3-pip libffi-dev -y
+RUN pip3 install --upgrade pip
+RUN pip3 install jupyter jupyterlab requests
+
 WORKDIR /var/www/html
-##RUN git clone --single-branch --branch dockerized https://github.com/inab/openVRE.git
-##RUN git clone --single-branch --branch dt4h_gui https://gitlab.bsc.es/inb/dt4h/openVRE.git
 ADD openVRE /var/www/html/openVRE
 RUN cd openVRE
 WORKDIR /var/www/html/openVRE
@@ -62,6 +64,3 @@ CMD /opt/docker/bin/entrypoint.sh supervisord
 #add cleaning step adjusting the document + sistema de cues
 #chmod u+x scripts/maintainance/cleanUsersData.php
 #crontab -e
-RUN apt install python3-pip libffi-dev -y
-RUN pip3 install --upgrade pip
-RUN pip3 install jupyter jupyterlab requests
