@@ -16,13 +16,13 @@ $dirName = InputTool_getDefExName();
 $toolId = "siteDiscovery";
 $tool   = getTool_fromId($toolId,1);
 
-// get project sites
+// get DT4H sites
 
 $sites = getSitesInfo("data");
 $sites_all = getSitesInfo();
 
 file_put_contents(
-	$GLOBALS['shared']."public/".$GLOBALS['AppPrefix']."_sites.json",
+	$GLOBALS['shared']."public/DT4H_sites.json",
 	json_encode($sites_all, $flags=JSON_PRETTY_PRINT)
 );
 
@@ -195,14 +195,14 @@ file_put_contents(
 			       </div>
 			    </div>
 			    				<!-- PRINT TOOL INPUT FILES -->
-								<input type="hidden" name="input_files_public_dir[Sites]" value="<?=$GLOBALS['AppPrefix']?>_sites.json" />
+								<input type="hidden" name="input_files_public_dir[DT4H_sites]" value="DT4H_sites.json" />
 <!--								<h4 class="form-section">File inputs</h4>
 
 										<div class="row">
 
 											<div class="col-md-12">
-							<?php //$ff = matchFormat_File($tool['input_files']['Sites']['file_type'], $inPaths); ?>
-							<?php //InputTool_printSelectFile($tool['input_files']['Sites'], $rerunParams['Sites'], $ff[0], false, true); ?>
+							<?php //$ff = matchFormat_File($tool['input_files']['DT4H_sites']['file_type'], $inPaths); ?>
+							<?php //InputTool_printSelectFile($tool['input_files']['DT4H_sites'], $rerunParams['DT4H_sites'], $ff[0], false, true); ?>
 											</div>
 			     						</div>
 -->

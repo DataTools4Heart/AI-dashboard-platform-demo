@@ -136,7 +136,7 @@ class myTool(Tool):
             print(output_file_path)
             cmd = [
                 'python3', '/home/site_discovery.py',
-                '--config', input_files['Sites']
+                '--config', input_files['DT4H_sites']
                 ,
                 '--output_path', output_file_path
             ]
